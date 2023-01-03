@@ -30,21 +30,21 @@ namespace CKAN.ConsoleUI {
             moduleList = new ConsoleListBox<CkanModule>(
                 1, 4, -1, -2,
                 GetAllMods(regTheme),
-                new List<ConsoleListBoxColumn<CkanModule>>() {
-                    new ConsoleListBoxColumn<CkanModule>() {
+                new List<ConsoleListBoxColumn<CkanModule>> {
+                    new ConsoleListBoxColumn<CkanModule> {
                         Header   = "",
                         Width    = 1,
                         Renderer = StatusSymbol
-                    }, new ConsoleListBoxColumn<CkanModule>() {
+                    }, new ConsoleListBoxColumn<CkanModule> {
                         Header   = Properties.Resources.ModListNameHeader,
                         Width    = 44,
                         Renderer = m => m.name ?? ""
-                    }, new ConsoleListBoxColumn<CkanModule>() {
+                    }, new ConsoleListBoxColumn<CkanModule> {
                         Header   = Properties.Resources.ModListVersionHeader,
                         Width    = 10,
                         Renderer = m => ModuleInstaller.StripEpoch(m.version?.ToString() ?? ""),
                         Comparer = (a, b) => a.version.CompareTo(b.version)
-                    }, new ConsoleListBoxColumn<CkanModule>() {
+                    }, new ConsoleListBoxColumn<CkanModule> {
                         Header   = Properties.Resources.ModListMaxGameVersionHeader,
                         Width    = 20,
                         Renderer = m => registry.LatestCompatibleKSP(m.identifier)?.ToString() ?? "",
@@ -258,7 +258,7 @@ namespace CKAN.ConsoleUI {
                 }
             ));
 
-            List<ConsoleMenuOption> opts = new List<ConsoleMenuOption>() {
+            List<ConsoleMenuOption> opts = new List<ConsoleMenuOption> {
                 new ConsoleMenuOption(Properties.Resources.ModListSortMenu, "",
                     Properties.Resources.ModListSortMenuTip,
                     true, null, null, moduleList.SortMenu()),
@@ -560,7 +560,7 @@ namespace CKAN.ConsoleUI {
             moduleList?.SetData(GetAllMods(theme, true));
         }
 
-        private List<CkanModule> allMods = null;
+        private List<CkanModule> allMods;
 
         private List<CkanModule> GetAllMods(ConsoleTheme theme, bool force = false)
         {
@@ -667,15 +667,15 @@ namespace CKAN.ConsoleUI {
             return total;
         }
 
-        private GameInstanceManager manager;
+        private readonly GameInstanceManager manager;
         private Registry            registry;
-        private bool                debug;
+        private readonly bool                debug;
 
-        private ConsoleField               searchBox;
-        private ConsoleListBox<CkanModule> moduleList;
+        private readonly ConsoleField               searchBox;
+        private readonly ConsoleListBox<CkanModule> moduleList;
 
-        private ChangePlan      plan   = new ChangePlan();
-        private HashSet<string> recent = new HashSet<string>();
+        private readonly ChangePlan      plan   = new ChangePlan();
+        private readonly HashSet<string> recent = new HashSet<string>();
 
         private int searchWidth => Math.Max(30, Math.Max(
             Properties.Resources.ModListSearchFocusedGhostText.Length,

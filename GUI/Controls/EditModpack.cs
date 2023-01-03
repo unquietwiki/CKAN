@@ -99,7 +99,7 @@ namespace CKAN.GUI
                         && !module.recommends.Any(rel => rel.ContainsAny(ids))
                         && !module.suggests.Any(rel => rel.ContainsAny(ids));
                 })
-                .Select(kvp => (RelationshipDescriptor) new ModuleRelationshipDescriptor()
+                .Select(kvp => (RelationshipDescriptor) new ModuleRelationshipDescriptor
                     {
                         name    = kvp.Key,
                         version = kvp.Value,
@@ -187,7 +187,7 @@ namespace CKAN.GUI
             module.author     = AuthorTextBox.Text
                 .Split(',').Select(a => a.Trim()).ToList();
             module.version    = new ModuleVersion(VersionTextBox.Text);
-            module.license    = new List<License>() { new License(LicenseComboBox.Text) };
+            module.license    = new List<License> { new License(LicenseComboBox.Text) };
             module.ksp_version_min = string.IsNullOrEmpty(GameVersionMinComboBox.Text)
                 ? null
                 : GameVersion.Parse(GameVersionMinComboBox.Text);
@@ -347,7 +347,7 @@ namespace CKAN.GUI
                 // in case the user changes the checkbox after cancelling out of the
                 // save popup. So we create a new CkanModule instead.
                 var newMod = CkanModule.FromJson(CkanModule.ToJson(input));
-                foreach (var rels in new List<List<RelationshipDescriptor>>()
+                foreach (var rels in new List<List<RelationshipDescriptor>>
                     {
                         newMod.depends,
                         newMod.recommends,
@@ -372,7 +372,7 @@ namespace CKAN.GUI
 
         private bool TrySavePrompt(List<ExportOption> exportOptions, out ExportOption selectedOption, out string filename)
         {
-            var dlg = new SaveFileDialog()
+            var dlg = new SaveFileDialog
             {
                 Filter = string.Join("|", exportOptions.Select(i => i.ToString()).ToArray()),
                 Title  = Properties.Resources.ExportInstalledModsDialogTitle
@@ -391,7 +391,7 @@ namespace CKAN.GUI
             }
         }
 
-        private static readonly List<ExportOption> modpackExportOptions = new List<ExportOption>()
+        private static readonly List<ExportOption> modpackExportOptions = new List<ExportOption>
         {
             new ExportOption(ExportFileType.Ckan, Properties.Resources.MainModPack, "ckan"),
         };
@@ -399,8 +399,8 @@ namespace CKAN.GUI
         private CkanModule                   module;
         private IUser                        user;
         private TaskCompletionSource<bool>   task;
-        private List<RelationshipDescriptor> ignored = new List<RelationshipDescriptor>();
-        private Dictionary<ListViewGroup, List<RelationshipDescriptor>> GroupToRelationships =
+        private readonly List<RelationshipDescriptor> ignored = new List<RelationshipDescriptor>();
+        private readonly Dictionary<ListViewGroup, List<RelationshipDescriptor>> GroupToRelationships =
             new Dictionary<ListViewGroup, List<RelationshipDescriptor>>();
     }
 }

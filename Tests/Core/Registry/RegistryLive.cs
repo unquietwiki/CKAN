@@ -13,7 +13,7 @@ namespace Tests.Core.Registry
     [TestFixture]
     public class RegistryLive
     {
-        private static string test_registry = TestData.TestRegistry();
+        private static readonly string test_registry = TestData.TestRegistry();
         private DisposableKSP temp_ksp;
         private CKAN.IRegistryQuerier registry;
 

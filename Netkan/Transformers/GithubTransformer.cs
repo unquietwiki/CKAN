@@ -209,7 +209,7 @@ namespace CKAN.NetKAN.Transformers
         private JToken getAuthors(GithubRepo repo, GithubRelease release)
         {
             // Start with the user that published the release
-            var authors = new List<string>() { release.Author };
+            var authors = new List<string> { release.Author };
             for (GithubRepo r = repo; r != null;)
             {
                 switch (r.Owner?.Type)

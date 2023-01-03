@@ -155,7 +155,7 @@ namespace CKAN.NetKAN.Sources.Avc
                     throw new InvalidCastException("Trying to convert non-JSON object to Version object");
             }
 
-            var components = new List<string>() { major, minor, patch };
+            var components = new List<string> { major, minor, patch };
 
             if (!string.IsNullOrWhiteSpace(build))
             {

@@ -31,15 +31,15 @@ namespace CKAN
         public IUser User { get; set; }
 
         // To allow the ModuleInstaller to work on multiple KSP instances, keep a list of each ModuleInstaller and return the correct one upon request.
-        private static SortedList<string, ModuleInstaller> instances = new SortedList<string, ModuleInstaller>();
+        private static readonly SortedList<string, ModuleInstaller> instances = new SortedList<string, ModuleInstaller>();
 
         private static readonly ILog log = LogManager.GetLogger(typeof(ModuleInstaller));
 
-        private GameInstance ksp;
+        private readonly GameInstance ksp;
 
-        private NetModuleCache Cache;
+        private readonly NetModuleCache Cache;
 
-        public ModuleInstallerReportModInstalled onReportModInstalled = null;
+        public ModuleInstallerReportModInstalled onReportModInstalled;
 
         // Constructor
         public ModuleInstaller(GameInstance ksp, NetModuleCache cache, IUser user)
@@ -1275,7 +1275,7 @@ namespace CKAN
                             && !toInstall.Any(m => m.identifier == provider.identifier)
                             && dependersIndex.TryGetValue(provider, out List<string> dependers)
                             && (provider.IsDLC || CanInstall(RelationshipResolver.DependsOnlyOpts(),
-                                instList.Concat(new List<CkanModule>() { provider }).ToList(), registry)))
+                                instList.Concat(new List<CkanModule> { provider }).ToList(), registry)))
                         {
                             dependersIndex.Remove(provider);
                             recommendations.Add(
@@ -1303,7 +1303,7 @@ namespace CKAN
                             && !toInstall.Any(m => m.identifier == provider.identifier)
                             && dependersIndex.TryGetValue(provider, out List<string> dependers)
                             && (provider.IsDLC || CanInstall(RelationshipResolver.DependsOnlyOpts(),
-                                instList.Concat(new List<CkanModule>() { provider }).ToList(), registry)))
+                                instList.Concat(new List<CkanModule> { provider }).ToList(), registry)))
                         {
                             dependersIndex.Remove(provider);
                             suggestions.Add(provider, dependers);
@@ -1335,7 +1335,7 @@ namespace CKAN
                             }
                             else
                             {
-                                supporters.Add(mod, new HashSet<string>() { name });
+                                supporters.Add(mod, new HashSet<string> { name });
                             }
                         }
                     }
@@ -1343,7 +1343,7 @@ namespace CKAN
             }
             supporters.RemoveWhere(kvp => !CanInstall(
                 RelationshipResolver.DependsOnlyOpts(),
-                instList.Concat(new List<CkanModule>() { kvp.Key }).ToList(),
+                instList.Concat(new List<CkanModule> { kvp.Key }).ToList(),
                 registry
             ));
 
@@ -1360,7 +1360,7 @@ namespace CKAN
             Dictionary<CkanModule, List<string>> dependersIndex = new Dictionary<CkanModule, List<string>>();
             foreach (CkanModule mod in sourceModules)
             {
-                foreach (List<RelationshipDescriptor> relations in new List<List<RelationshipDescriptor>>() { mod.recommends, mod.suggests })
+                foreach (List<RelationshipDescriptor> relations in new List<List<RelationshipDescriptor>> { mod.recommends, mod.suggests })
                 {
                     if (relations != null)
                     {
@@ -1383,7 +1383,7 @@ namespace CKAN
                                     else
                                     {
                                         // Add a new entry if this provider isn't listed yet.
-                                        dependersIndex.Add(provider, new List<string>() { mod.identifier });
+                                        dependersIndex.Add(provider, new List<string> { mod.identifier });
                                     }
                                 }
                             }
@@ -1442,7 +1442,7 @@ namespace CKAN
                 foreach (CkanModule mod in k.modules)
                 {
                     // Try each option recursively to see if any are successful
-                    if (CanInstall(opts, toInstall.Concat(new List<CkanModule>() { mod }).ToList(), registry))
+                    if (CanInstall(opts, toInstall.Concat(new List<CkanModule> { mod }).ToList(), registry))
                     {
                         // Child call will emit debug output, so we don't need to here
                         return true;

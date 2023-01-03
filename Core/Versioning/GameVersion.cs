@@ -233,7 +233,7 @@ namespace CKAN.Versioning
         /// </returns>
         public override string ToString() => _string;
 
-        private static Dictionary<string, GameVersion> VersionsMax = new Dictionary<string, GameVersion>();
+        private static readonly Dictionary<string, GameVersion> VersionsMax = new Dictionary<string, GameVersion>();
 
         /// <summary>
         /// Generate version mapping table once for all instances to share

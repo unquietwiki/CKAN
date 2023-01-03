@@ -82,7 +82,7 @@ namespace CKAN.Configuration
         // any performance gains.
         private static readonly object _lock = new object();
         private static string configFile = defaultConfigFile;
-        private static Config config = null;
+        private static Config config;
 
         // <summary>
         // Where the config file is located.

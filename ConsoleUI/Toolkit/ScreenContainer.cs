@@ -201,7 +201,7 @@ namespace CKAN.ConsoleUI.Toolkit {
             Console.SetCursorPosition(0, Console.WindowHeight - 1);
             Console.BackgroundColor = theme.FooterBg;
             Console.Write("  ");
-            var tipLists = new List<List<ScreenTip>>() { tips };
+            var tipLists = new List<List<ScreenTip>> { tips };
             if (objects.Count > 0) {
                 tipLists.Add(objects[focusIndex].Tips);
             }
@@ -260,14 +260,14 @@ namespace CKAN.ConsoleUI.Toolkit {
             }
         }
 
-        private bool done = false;
+        private bool done;
 
-        private List<ScreenObject> objects    = new List<ScreenObject>();
-        private int                focusIndex = 0;
+        private readonly List<ScreenObject> objects    = new List<ScreenObject>();
+        private int focusIndex;
 
-        private Dictionary<ConsoleKeyInfo, KeyAction> bindings   = new Dictionary<ConsoleKeyInfo, KeyAction>();
-        private List<ScreenTip>                       tips       = new List<ScreenTip>();
-        private object                                screenLock = new object();
+        private readonly Dictionary<ConsoleKeyInfo, KeyAction> bindings   = new Dictionary<ConsoleKeyInfo, KeyAction>();
+        private readonly List<ScreenTip>                       tips       = new List<ScreenTip>();
+        private readonly object                                screenLock = new object();
 
         private static readonly string tipSeparator = $" {Symbols.vertLine} ";
     }

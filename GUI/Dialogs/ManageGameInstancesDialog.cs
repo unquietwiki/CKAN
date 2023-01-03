@@ -15,7 +15,7 @@ namespace CKAN.GUI
         private readonly GameInstanceManager _manager = Main.Instance.Manager;
         private readonly IUser _user;
         private RenameInstanceDialog _renameInstanceDialog;
-        private readonly OpenFileDialog _instanceDialog = new OpenFileDialog()
+        private readonly OpenFileDialog _instanceDialog = new OpenFileDialog
         {
             AddExtension     = false,
             CheckFileExists  = false,

@@ -353,7 +353,7 @@ namespace CKAN
             return builder.ToString();
         }
 
-        private StringBuilder builder = null;
+        private StringBuilder builder;
     }
 
     /// <summary>

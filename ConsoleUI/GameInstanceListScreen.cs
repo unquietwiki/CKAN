@@ -29,25 +29,25 @@ namespace CKAN.ConsoleUI {
             instanceList = new ConsoleListBox<GameInstance>(
                 1, 4, -1, -2,
                 manager.Instances.Values,
-                new List<ConsoleListBoxColumn<GameInstance>>() {
-                    new ConsoleListBoxColumn<GameInstance>() {
+                new List<ConsoleListBoxColumn<GameInstance>> {
+                    new ConsoleListBoxColumn<GameInstance> {
                         Header   = Properties.Resources.InstanceListDefaultHeader,
                         Width    = 7,
                         Renderer = StatusSymbol
-                    }, new ConsoleListBoxColumn<GameInstance>() {
+                    }, new ConsoleListBoxColumn<GameInstance> {
                         Header   = Properties.Resources.InstanceListNameHeader,
                         Width    = 20,
                         Renderer = k => k.Name
-                    }, new ConsoleListBoxColumn<GameInstance>() {
+                    }, new ConsoleListBoxColumn<GameInstance> {
                         Header   = Properties.Resources.InstanceListGameHeader,
                         Width    = 5,
                         Renderer = k => k.game.ShortName
-                    }, new ConsoleListBoxColumn<GameInstance>() {
+                    }, new ConsoleListBoxColumn<GameInstance> {
                         Header   = Properties.Resources.InstanceListVersionHeader,
                         Width    = 12,
                         Renderer = k => k.Version()?.ToString() ?? Properties.Resources.InstanceListNoVersion,
                         Comparer = (a, b) => a.Version()?.CompareTo(b.Version() ?? GameVersion.Any) ?? 1
-                    }, new ConsoleListBoxColumn<GameInstance>() {
+                    }, new ConsoleListBoxColumn<GameInstance> {
                         Header   = Properties.Resources.InstanceListPathHeader,
                         Width    = 70,
                         Renderer = k => k.GameDir()
@@ -125,7 +125,7 @@ namespace CKAN.ConsoleUI {
                     } catch (NotKSPDirKraken k) {
                         ConsoleMessageDialog errd = new ConsoleMessageDialog(
                             string.Format(Properties.Resources.InstanceListLoadingError, k.path, k.Message),
-                            new List<string>() { Properties.Resources.OK }
+                            new List<string> { Properties.Resources.OK }
                         );
                         errd.Run(theme);
                     }
@@ -186,7 +186,7 @@ namespace CKAN.ConsoleUI {
 
                     ConsoleMessageDialog md = new ConsoleMessageDialog(
                         string.Format(Properties.Resources.InstanceListLocked, k.lockfilePath),
-                        new List<string>() {
+                        new List<string> {
                             Properties.Resources.Cancel,
                             Properties.Resources.Force
                         }
@@ -204,7 +204,7 @@ namespace CKAN.ConsoleUI {
 
                     ConsoleMessageDialog errd = new ConsoleMessageDialog(
                         string.Format(Properties.Resources.InstanceListLoadingError, ksp.GameDir(), k.Message),
-                        new List<string>() { Properties.Resources.OK }
+                        new List<string> { Properties.Resources.OK }
                     );
                     errd.Run(theme);
                     return false;
@@ -213,7 +213,7 @@ namespace CKAN.ConsoleUI {
 
                     ConsoleMessageDialog errd = new ConsoleMessageDialog(
                         string.Format(Properties.Resources.InstanceListLoadingError, Path.Combine(ksp.CkanDir(), "registry.json"), e.Message),
-                        new List<string>() { Properties.Resources.OK }
+                        new List<string> { Properties.Resources.OK }
                     );
                     errd.Run(theme);
                     return false;
@@ -233,8 +233,8 @@ namespace CKAN.ConsoleUI {
                 : " ";
         }
 
-        private GameInstanceManager          manager;
-        private ConsoleListBox<GameInstance> instanceList;
+        private readonly GameInstanceManager          manager;
+        private readonly ConsoleListBox<GameInstance> instanceList;
 
         private static readonly string defaultMark = Symbols.checkmark;
     }

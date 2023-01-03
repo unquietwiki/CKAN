@@ -13,7 +13,7 @@ namespace CKAN.NetKAN.Validators
             JArray licenses = !json.ContainsKey("license") ? null
                 : json["license"] is JArray
                     ? (JArray)json["license"]
-                    : new JArray() { json["license"] };
+                    : new JArray { json["license"] };
             if (licenses != null)
             {
                 if (metadata.SpecVersion < v1p8 && json["license"] is JArray)

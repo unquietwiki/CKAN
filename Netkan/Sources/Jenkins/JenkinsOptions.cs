@@ -12,7 +12,7 @@ namespace CKAN.NetKAN.Sources.Jenkins
 
         [JsonProperty("use_filename_version")]
         [DefaultValue(false)]
-        public bool UseFilenameVersion = false;
+        public bool UseFilenameVersion;
 
         private Regex _assetMatch;
         [JsonProperty("asset_match")]

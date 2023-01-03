@@ -211,6 +211,6 @@ namespace CKAN
             return cache.Remove(module.download);
         }
 
-        private NetFileCache cache;
+        private readonly NetFileCache cache;
     }
 }

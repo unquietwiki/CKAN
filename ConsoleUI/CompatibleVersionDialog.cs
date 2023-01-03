@@ -28,8 +28,8 @@ namespace CKAN.ConsoleUI {
             choices = new ConsoleListBox<GameVersion>(
                 l + 2, t + 2, r - 2, b - 4,
                 options,
-                new List<ConsoleListBoxColumn<GameVersion>>() {
-                    new ConsoleListBoxColumn<GameVersion>() {
+                new List<ConsoleListBoxColumn<GameVersion>> {
+                    new ConsoleListBoxColumn<GameVersion> {
                         Header   = Properties.Resources.CompatibleVersionsListHeader,
                         Width    = r - l - 5,
                         Renderer = v => v.ToString(),
@@ -102,8 +102,8 @@ namespace CKAN.ConsoleUI {
 
         private List<GameVersion> options;
 
-        private ConsoleListBox<GameVersion> choices;
-        private ConsoleField                manualEntry;
+        private readonly ConsoleListBox<GameVersion> choices;
+        private readonly ConsoleField                manualEntry;
         private GameVersion                 choice;
     }
 }

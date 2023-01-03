@@ -127,7 +127,7 @@ namespace CKAN.GUI
             task?.SetResult(false);
         }
 
-        private TaskCompletionSource<bool> task = null;
-        private GameInstance instance = null;
+        private TaskCompletionSource<bool> task;
+        private GameInstance instance;
     }
 }

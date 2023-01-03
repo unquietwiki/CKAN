@@ -53,7 +53,7 @@ namespace Tests.Core
             _manager.Cache.Store(_testModule, testModFile, new Progress<long>(bytes => {}));
             HashSet<string> possibleConfigOnlyDirs = null;
             _installer.InstallList(
-                new List<string>() { _testModule.identifier },
+                new List<string> { _testModule.identifier },
                 new RelationshipResolverOptions(),
                 _registryManager,
                 ref possibleConfigOnlyDirs
@@ -75,7 +75,7 @@ namespace Tests.Core
         public void TestGameRoot()
         {
             var result = _installer
-                .AddParentDirectories(new HashSet<string>() { _gameDir })
+                .AddParentDirectories(new HashSet<string> { _gameDir })
                 .ToList();
 
             Assert.IsEmpty(result);
@@ -88,7 +88,7 @@ namespace Tests.Core
         public void TestGameData()
         {
             var result = _installer
-                .AddParentDirectories(new HashSet<string>() { _gameDataDir })
+                .AddParentDirectories(new HashSet<string> { _gameDataDir })
                 .ToList();
 
             Assert.IsEmpty(result);
@@ -105,8 +105,8 @@ namespace Tests.Core
             {
                 _installer.AddParentDirectories(null);
                 _installer.AddParentDirectories(new HashSet<string>());
-                _installer.AddParentDirectories(new HashSet<string>() { string.Empty });
-                _installer.AddParentDirectories(new HashSet<string>() { Path.GetPathRoot(Environment.CurrentDirectory) });
+                _installer.AddParentDirectories(new HashSet<string> { string.Empty });
+                _installer.AddParentDirectories(new HashSet<string> { Path.GetPathRoot(Environment.CurrentDirectory) });
             });
         }
 
@@ -123,7 +123,7 @@ namespace Tests.Core
 
             Assert.DoesNotThrow(delegate ()
             {
-                var result = _installer.AddParentDirectories(new HashSet<string>()
+                var result = _installer.AddParentDirectories(new HashSet<string>
                 {
                     rawInstallDir,
                     windowsInstallDir,

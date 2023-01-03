@@ -250,10 +250,10 @@ namespace CKAN.ConsoleUI.Toolkit {
         /// <summary>
         /// Available themes
         /// </summary>
-        public static readonly Dictionary<string, ConsoleTheme> Themes = new Dictionary<string, ConsoleTheme>() {
+        public static readonly Dictionary<string, ConsoleTheme> Themes = new Dictionary<string, ConsoleTheme> {
             {
                 "default",
-                new ConsoleTheme() {
+                new ConsoleTheme {
                     SplashBg               = null,
                     SplashNormalFg         = ConsoleColor.Gray,
                     SplashAccentFg         = ConsoleColor.Blue,
@@ -311,7 +311,7 @@ namespace CKAN.ConsoleUI.Toolkit {
                 }
             }, {
                 "dark",
-                new ConsoleTheme() {
+                new ConsoleTheme {
                     SplashBg               = ConsoleColor.Black,
                     SplashNormalFg         = ConsoleColor.DarkGreen,
                     SplashAccentFg         = ConsoleColor.Green,

@@ -69,7 +69,7 @@ namespace CKAN.NetKAN.Validators
         /// because they are commonly bundled and installed by other mods,
         /// which may or may not have their own plugins.
         /// </summary>
-        private string[] identifiersToIgnore = new string[]
+        private readonly string[] identifiersToIgnore = new string[]
         {
             "MiniAVC"
         };

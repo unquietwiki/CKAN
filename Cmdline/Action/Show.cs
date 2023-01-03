@@ -317,7 +317,7 @@ namespace CKAN.CmdLine
             var gameVersions = modules.Select(m =>
             {
                 GameVersion minKsp = null, maxKsp = null;
-                Registry.GetMinMaxVersions(new List<CkanModule>() { m }, out _, out _, out minKsp, out maxKsp);
+                Registry.GetMinMaxVersions(new List<CkanModule> { m }, out _, out _, out minKsp, out maxKsp);
                 return GameVersionRange.VersionSpan(inst.game, minKsp, maxKsp);
             }).ToList();
             string[] headers = new string[] {

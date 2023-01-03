@@ -112,13 +112,13 @@ namespace CKAN.NetKAN.Processors
             }
         }
 
-        private NetFileCache cache;
-        private IHttpService http;
+        private readonly NetFileCache cache;
+        private readonly IHttpService http;
 
-        private NetkanTransformer transformer;
+        private readonly NetkanTransformer transformer;
 
-        private NetkanValidator netkanValidator = new NetkanValidator();
-        private CkanValidator   ckanValidator;
+        private readonly NetkanValidator netkanValidator = new NetkanValidator();
+        private readonly CkanValidator   ckanValidator;
 
         private static readonly ILog log = LogManager.GetLogger(typeof(Inflator));
     }

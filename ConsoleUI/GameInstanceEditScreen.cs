@@ -53,16 +53,16 @@ namespace CKAN.ConsoleUI {
                 repoList = new ConsoleListBox<Repository>(
                     3, repoListTop, -3, repoListBottom,
                     new List<Repository>(repoEditList.Values),
-                    new List<ConsoleListBoxColumn<Repository>>() {
-                        new ConsoleListBoxColumn<Repository>() {
+                    new List<ConsoleListBoxColumn<Repository>> {
+                        new ConsoleListBoxColumn<Repository> {
                             Header   = Properties.Resources.InstanceEditRepoIndexHeader,
                             Renderer = r => r.priority.ToString(),
                             Width    = 7
-                        }, new ConsoleListBoxColumn<Repository>() {
+                        }, new ConsoleListBoxColumn<Repository> {
                             Header   = Properties.Resources.InstanceEditRepoNameHeader,
                             Renderer = r => r.name,
                             Width    = 16
-                        }, new ConsoleListBoxColumn<Repository>() {
+                        }, new ConsoleListBoxColumn<Repository> {
                             Header   = Properties.Resources.InstanceEditRepoURLHeader,
                             Renderer = r => r.uri.ToString(),
                             Width    = 50
@@ -124,8 +124,8 @@ namespace CKAN.ConsoleUI {
                 compatList = new ConsoleListBox<GameVersion>(
                     3, compatListTop, -3, compatListBottom,
                     compatEditList,
-                    new List<ConsoleListBoxColumn<GameVersion>>() {
-                        new ConsoleListBoxColumn<GameVersion>() {
+                    new List<ConsoleListBoxColumn<GameVersion>> {
+                        new ConsoleListBoxColumn<GameVersion> {
                             Header   = Properties.Resources.InstanceEditCompatVersionHeader,
                             Width    = 10,
                             Renderer = v => v.ToString(),
@@ -228,13 +228,13 @@ namespace CKAN.ConsoleUI {
             }
         }
 
-        private GameInstance ksp;
-        private Registry     registry;
+        private readonly GameInstance ksp;
+        private readonly Registry     registry;
 
-        private SortedDictionary<string, Repository> repoEditList;
-        private ConsoleListBox<Repository>           repoList;
-        private List<GameVersion>                     compatEditList;
-        private ConsoleListBox<GameVersion>           compatList;
+        private readonly SortedDictionary<string, Repository> repoEditList;
+        private readonly ConsoleListBox<Repository>           repoList;
+        private readonly List<GameVersion>                     compatEditList;
+        private readonly ConsoleListBox<GameVersion>           compatList;
 
         private const int repoFrameTop      = pathRow           + 2;
         private const int repoListTop       = repoFrameTop      + 2;

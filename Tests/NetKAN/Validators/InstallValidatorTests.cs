@@ -56,8 +56,8 @@ namespace Tests.NetKAN.Validators
             var json = new JObject();
             json["spec_version"] = spec_version;
             json["identifier"]   = "AwesomeMod";
-            json["install"]      = new JArray() {
-                new JObject() {
+            json["install"]      = new JArray {
+                new JObject {
                     { "file",       "something" },
                     { "install_to", install_to  }
                 }
@@ -74,7 +74,7 @@ namespace Tests.NetKAN.Validators
             var json = new JObject();
             json["spec_version"] = spec_version;
             json["identifier"]   = "AwesomeMod";
-            json["install"]      = new JArray() {
+            json["install"]      = new JArray {
                 JObject.Parse(install_stanza)
             };
 

@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
@@ -17,6 +17,7 @@ using CKAN.Versioning;
 using CKAN.NetKAN.Transformers;
 using CKAN.NetKAN.Model;
 using CKAN.NetKAN.Extensions;
+using System.Threading.Tasks;
 
 namespace CKAN.NetKAN.Processors
 {
@@ -43,23 +44,20 @@ namespace CKAN.NetKAN.Processors
                 warningAppender = null;
             }
         }
-
-        public void Process()
+        
+        public Task Process()
         {
-            while (true)
-            {
-                // 10 messages, 30 minutes to allow time to handle them all
-                handleMessages(inputQueueURL, 10, 30);
-            }
+            // 10 messages, 30 minutes to allow time to handle them all
+            return handleMessages(inputQueueURL, 10, 30);
         }
 
         private QueueAppender GetQueueLogAppender()
         {
-            var qap = new QueueAppender()
+            var qap = new QueueAppender
             {
                 Name = "QueueAppender",
             };
-            qap.AddFilter(new LevelMatchFilter()
+            qap.AddFilter(new LevelMatchFilter
             {
                 LevelToMatch  = Level.Warn,
                 AcceptOnMatch = true,
@@ -68,26 +66,24 @@ namespace CKAN.NetKAN.Processors
             return qap;
         }
 
-        private string getQueueUrl(string name)
+        private System.Uri getQueueUrl(string name)
         {
             log.DebugFormat("Looking up URL for queue {0}", name);
-            return client.GetQueueUrl(new GetQueueUrlRequest() { QueueName = name }).QueueUrl;
+            return new System.Uri(client.GetQueueUrl(new GetQueueUrlRequest { QueueName = name }).QueueUrl);
         }
 
-        private void handleMessages(string url, int howMany, int timeoutMinutes)
+        private Task handleMessages(System.Uri url, int howMany, int timeoutMinutes)
         {
             log.DebugFormat("Looking for messages from {0}", url);
-            var resp = client.ReceiveMessage(new ReceiveMessageRequest()
+            var resp = client.ReceiveMessage(new ReceiveMessageRequest
             {
-                QueueUrl              = url,
+                QueueUrl              = url.ToString(),
                 MaxNumberOfMessages   = howMany,
                 VisibilityTimeout     = (int)TimeSpan.FromMinutes(timeoutMinutes).TotalSeconds,
-                MessageAttributeNames = new List<string>() { "All" },
+                MessageAttributeNames = new List<string> { "All" },
             });
             if (!resp.Messages.Any())
-            {
                 log.Debug("No metadata in queue");
-            }
             else
             {
                 try
@@ -97,13 +93,11 @@ namespace CKAN.NetKAN.Processors
                     // Might be >10 if Releases>1
                     var responses = resp.Messages.SelectMany(Inflate).ToList();
                     for (int i = 0; i < responses.Count; i += howMany)
-                    {
-                        client.SendMessageBatch(new SendMessageBatchRequest()
+                        client.SendMessageBatch(new SendMessageBatchRequest
                         {
-                            QueueUrl = outputQueueURL,
+                            QueueUrl = outputQueueURL.ToString(),
                             Entries  = responses.GetRange(i, Math.Min(howMany, responses.Count - i)),
                         });
-                    }
                 }
                 catch (Exception e)
                 {
@@ -112,9 +106,9 @@ namespace CKAN.NetKAN.Processors
                 try
                 {
                     log.Debug("Deleting messages");
-                    client.DeleteMessageBatch(new DeleteMessageBatchRequest()
+                    client.DeleteMessageBatch(new DeleteMessageBatchRequest
                     {
-                        QueueUrl = url,
+                        QueueUrl = url.ToString(),
                         Entries  = resp.Messages.Select(Delete).ToList(),
                     });
                 }
@@ -123,6 +117,8 @@ namespace CKAN.NetKAN.Processors
                     log.ErrorFormat("Delete failed: {0}\r\n{1}", e.Message, e.StackTrace);
                 }
             }
+
+            return Task.CompletedTask;
         }
 
         private IEnumerable<SendMessageBatchRequestEntry> Inflate(Message msg)
@@ -178,11 +174,11 @@ namespace CKAN.NetKAN.Processors
 
         private SendMessageBatchRequestEntry inflationMessage(Metadata ckan, Metadata netkan, TransformOptions opts, bool success, string err = null)
         {
-            var attribs = new Dictionary<string, MessageAttributeValue>()
+            var attribs = new Dictionary<string, MessageAttributeValue>
             {
                 {
                     "ModIdentifier",
-                    new MessageAttributeValue()
+                    new MessageAttributeValue
                     {
                         DataType    = "String",
                         StringValue = netkan.Identifier
@@ -190,7 +186,7 @@ namespace CKAN.NetKAN.Processors
                 },
                 {
                     "Staged",
-                    new MessageAttributeValue()
+                    new MessageAttributeValue
                     {
                         DataType    = "String",
                         StringValue = opts.Staged.ToString()
@@ -198,7 +194,7 @@ namespace CKAN.NetKAN.Processors
                 },
                 {
                     "Success",
-                    new MessageAttributeValue()
+                    new MessageAttributeValue
                     {
                         DataType    = "String",
                         StringValue = success.ToString()
@@ -206,7 +202,7 @@ namespace CKAN.NetKAN.Processors
                 },
                 {
                     "CheckTime",
-                    new MessageAttributeValue()
+                    new MessageAttributeValue
                     {
                         DataType    = "String",
                         StringValue = DateTime.UtcNow.ToString("s", CultureInfo.InvariantCulture)
@@ -217,7 +213,7 @@ namespace CKAN.NetKAN.Processors
             {
                 attribs.Add(
                     "FileName",
-                    new MessageAttributeValue()
+                    new MessageAttributeValue
                     {
                         DataType    = "String",
                         StringValue = Program.CkanFileName(ckan)
@@ -228,7 +224,7 @@ namespace CKAN.NetKAN.Processors
             {
                 attribs.Add(
                     "ErrorMessage",
-                    new MessageAttributeValue()
+                    new MessageAttributeValue
                     {
                         DataType    = "String",
                         StringValue = err
@@ -239,7 +235,7 @@ namespace CKAN.NetKAN.Processors
             {
                 attribs.Add(
                     "WarningMessages",
-                    new MessageAttributeValue()
+                    new MessageAttributeValue
                     {
                         DataType    = "String",
                         StringValue = string.Join("\r\n", warningAppender.Warnings),
@@ -251,14 +247,14 @@ namespace CKAN.NetKAN.Processors
             {
                 attribs.Add(
                     "StagingReason",
-                    new MessageAttributeValue()
+                    new MessageAttributeValue
                     {
                         DataType    = "String",
                         StringValue = string.Join("\r\n\r\n", opts.StagingReasons),
                     }
                 );
             }
-            return new SendMessageBatchRequestEntry()
+            return new SendMessageBatchRequestEntry
             {
                 Id                     = (responseId++).ToString(),
                 MessageGroupId         = "1",
@@ -291,20 +287,20 @@ namespace CKAN.NetKAN.Processors
 
         private DeleteMessageBatchRequestEntry Delete(Message msg)
         {
-            return new DeleteMessageBatchRequestEntry()
+            return new DeleteMessageBatchRequestEntry
             {
                 Id            = msg.MessageId,
                 ReceiptHandle = msg.ReceiptHandle,
             };
         }
 
-        private Inflator        inflator;
-        private AmazonSQSClient client = new AmazonSQSClient();
+        private readonly Inflator        inflator;
+        private readonly AmazonSQSClient client = new AmazonSQSClient();
 
-        private readonly string inputQueueURL;
-        private readonly string outputQueueURL;
+        private readonly System.Uri inputQueueURL;
+        private readonly System.Uri outputQueueURL;
 
-        private int responseId = 0;
+        private int responseId;
 
         private static readonly ILog log = LogManager.GetLogger(typeof(QueueHandler));
         private QueueAppender        warningAppender;

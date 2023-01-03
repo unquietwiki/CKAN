@@ -68,7 +68,7 @@ namespace CKAN.NetKAN.Sources.Jenkins
             return _http.DownloadText(url);
         }
 
-        private static readonly Dictionary<string, string> BuildTypeToProperty = new Dictionary<string, string>()
+        private static readonly Dictionary<string, string> BuildTypeToProperty = new Dictionary<string, string>
         {
             { "any",          "lastBuild"             },
             { "completed",    "lastCompletedBuild"    },
@@ -79,7 +79,7 @@ namespace CKAN.NetKAN.Sources.Jenkins
             { "unsuccessful", "lastUnsuccessfulBuild" }
         };
 
-        private static readonly Dictionary<string, string> BuildTypeToResult = new Dictionary<string, string>()
+        private static readonly Dictionary<string, string> BuildTypeToResult = new Dictionary<string, string>
         {
             // "any" not listed so it will match everything
             { "completed",    "SUCCESS" },
@@ -90,7 +90,7 @@ namespace CKAN.NetKAN.Sources.Jenkins
             { "unsuccessful", "FAILURE" }
         };
 
-        private IHttpService _http;
+        private readonly IHttpService _http;
         private static readonly ILog Log = LogManager.GetLogger(typeof(JenkinsApi));
     }
 }

@@ -164,7 +164,7 @@ namespace CKAN.ConsoleUI {
             }
         }
 
-        private static readonly RelationshipResolverOptions resolvOpts = new RelationshipResolverOptions() {
+        private static readonly RelationshipResolverOptions resolvOpts = new RelationshipResolverOptions {
             with_all_suggests              = false,
             with_suggests                  = false,
             with_recommends                = false,
@@ -172,9 +172,9 @@ namespace CKAN.ConsoleUI {
             without_enforce_consistency    = false
         };
 
-        private GameInstanceManager manager;
-        private ChangePlan plan;
-        private bool       debug;
+        private readonly GameInstanceManager manager;
+        private readonly ChangePlan plan;
+        private readonly bool       debug;
     }
 
 }

@@ -15,7 +15,7 @@ namespace CKAN.GUI
         private void ImportModules()
         {
             // Prompt the user to select one or more ZIP files
-            OpenFileDialog dlg = new OpenFileDialog()
+            OpenFileDialog dlg = new OpenFileDialog
             {
                 Title            = Properties.Resources.MainImportTitle,
                 AddExtension     = true,

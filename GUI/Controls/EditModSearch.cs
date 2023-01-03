@@ -87,8 +87,8 @@ namespace CKAN.GUI
         }
 
         private static readonly ILog log = LogManager.GetLogger(typeof(EditModSearch));
-        private bool suppressSearch = false;
-        private ModSearch currentSearch = null;
+        private bool suppressSearch;
+        private ModSearch currentSearch;
 
         private void ImmediateHandler(object sender, EventArgs e)
         {
@@ -164,7 +164,7 @@ namespace CKAN.GUI
         /// which makes the UI seem unresponsive or buggy:
         /// http://mono.1490590.n4.nabble.com/Incorrect-missing-and-duplicate-keypress-events-td4658863.html
         /// </summary>
-        private EventHandler<EventArgs> handler;
+        private readonly EventHandler<EventArgs> handler;
 
         private void ExpandButton_CheckedChanged(object sender, EventArgs e)
         {

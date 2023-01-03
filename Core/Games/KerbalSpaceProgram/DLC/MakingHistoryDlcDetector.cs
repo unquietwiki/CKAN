@@ -13,7 +13,7 @@ namespace CKAN.DLC
                 new KerbalSpaceProgram(),
                 "MakingHistory",
                 new Versioning.GameVersion(1, 4, 1),
-                new Dictionary<string, string>()
+                new Dictionary<string, string>
                 {
                     { "1.0", "1.0.0" }
                 })

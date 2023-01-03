@@ -18,7 +18,7 @@ namespace CKAN.CmdLine
             User = user;
         }
 
-        private GameInstanceManager manager;
+        private readonly GameInstanceManager manager;
 
         public int RunCommand(CKAN.GameInstance instance, object raw_options)
         {

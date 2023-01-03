@@ -10,7 +10,7 @@ namespace CKAN.NetKAN.Validators
 
         public NetkanValidator()
         {
-            _validators = new List<IValidator>()
+            _validators = new List<IValidator>
             {
                 new SpecVersionFormatValidator(),
                 new HasIdentifierValidator(),

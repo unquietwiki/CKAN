@@ -17,7 +17,7 @@ namespace CKAN.ConsoleUI {
         /// </summary>
         public AuthTokenScreen() : base()
         {
-            mainMenu = new ConsolePopupMenu(new List<ConsoleMenuOption>() {
+            mainMenu = new ConsolePopupMenu(new List<ConsoleMenuOption> {
                 new ConsoleMenuOption(Properties.Resources.AuthTokenListGitHubLink, "",
                     Properties.Resources.AuthTokenListGitHubLinkTip,
                     true, openGitHubURL)
@@ -31,13 +31,13 @@ namespace CKAN.ConsoleUI {
             tokenList = new ConsoleListBox<string>(
                 1, 4, -1, -2,
                 new List<string>(ServiceLocator.Container.Resolve<IConfiguration>().GetAuthTokenHosts()),
-                new List<ConsoleListBoxColumn<string>>() {
-                    new ConsoleListBoxColumn<string>() {
+                new List<ConsoleListBoxColumn<string>> {
+                    new ConsoleListBoxColumn<string> {
                         Header   = Properties.Resources.AuthTokenListHostHeader,
                         Width    = 20,
                         Renderer = (string s) => s
                     },
-                    new ConsoleListBoxColumn<string>() {
+                    new ConsoleListBoxColumn<string> {
                         Header   = Properties.Resources.AuthTokenListTokenHeader,
                         Width    = 50,
                         Renderer = (string s) => {
@@ -103,7 +103,7 @@ namespace CKAN.ConsoleUI {
             return true;
         }
 
-        private ConsoleListBox<string> tokenList;
+        private readonly ConsoleListBox<string> tokenList;
 
         private static readonly Uri githubTokenURL = new Uri("https://github.com/settings/tokens");
     }

@@ -245,7 +245,7 @@ namespace CKAN.GUI
             EventT received     = default(EventT);
 
             // Set up the timer that will track the delay
-            Timer timer = new Timer() { Interval = timeoutMs };
+            Timer timer = new Timer { Interval = timeoutMs };
             timer.Tick += (sender, evt) =>
             {
                 timer.Stop();

@@ -193,7 +193,7 @@ namespace Tests.Core
             string tempdir = TestData.NewTempDir();
             GameVersion version = GameVersion.Parse(baseVersion);
 
-            Dictionary<CKAN.DLC.IDlcDetector, GameVersion> dlcs = new Dictionary<CKAN.DLC.IDlcDetector, GameVersion>() {
+            Dictionary<CKAN.DLC.IDlcDetector, GameVersion> dlcs = new Dictionary<CKAN.DLC.IDlcDetector, GameVersion> {
                     { new CKAN.DLC.MakingHistoryDlcDetector(), mhVersion },
                     { new CKAN.DLC.BreakingGroundDlcDetector(), bgVersion }
                 };
@@ -231,7 +231,7 @@ namespace Tests.Core
             string tempdir = TestData.NewTempDir();
             GameVersion version = GameVersion.Parse("1.7.1");
 
-            Dictionary<CKAN.DLC.IDlcDetector, GameVersion> dlcs = new Dictionary<CKAN.DLC.IDlcDetector, GameVersion>() {
+            Dictionary<CKAN.DLC.IDlcDetector, GameVersion> dlcs = new Dictionary<CKAN.DLC.IDlcDetector, GameVersion> {
                     { new CKAN.DLC.MakingHistoryDlcDetector(), mhVersion },
                     { new CKAN.DLC.BreakingGroundDlcDetector(), bgVersion }
                 };

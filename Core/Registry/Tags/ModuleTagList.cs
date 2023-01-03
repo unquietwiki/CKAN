@@ -37,11 +37,11 @@ namespace CKAN
                         if (Tags.TryGetValue(tagName, out tag))
                             tag.Add(m.identifier);
                         else
-                            Tags.Add(tagName, new ModuleTag()
+                            Tags.Add(tagName, new ModuleTag
                             {
                                 Name              = tagName,
                                 Visible           = !HiddenTags.Contains(tagName),
-                                ModuleIdentifiers = new HashSet<string>() { m.identifier },
+                                ModuleIdentifiers = new HashSet<string> { m.identifier },
                             });
                     }
                 }

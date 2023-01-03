@@ -222,7 +222,7 @@ namespace CKAN
         [JsonConverter(typeof(JsonRelationshipConverter))]
         public List<RelationshipDescriptor> any_of;
 
-        public static readonly List<string> ForbiddenPropertyNames = new List<string>()
+        public static readonly List<string> ForbiddenPropertyNames = new List<string>
         {
             "name",
             "version",

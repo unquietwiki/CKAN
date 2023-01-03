@@ -81,7 +81,7 @@ namespace CKAN.GUI
         {
             SuspendLayout();
 
-            var ctl = new EditModSearch()
+            var ctl = new EditModSearch
             {
                 // Dock handles the layout for us
                 Dock      = DockStyle.Top,
@@ -155,7 +155,7 @@ namespace CKAN.GUI
             SurrenderFocus?.Invoke();
         }
 
-        private List<EditModSearch> editors = new List<EditModSearch>();
+        private readonly List<EditModSearch> editors = new List<EditModSearch>();
     }
 
 }

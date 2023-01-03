@@ -17,8 +17,8 @@ namespace CKAN.GUI
             InitializeComponent();
         }
 
-        private GUIMod visibleGuiModule = null;
-        private bool   ignoreItemCheck  = false;
+        private GUIMod visibleGuiModule;
+        private bool ignoreItemCheck;
 
         private void VersionsListView_ItemCheck(object sender, ItemCheckEventArgs e)
         {
@@ -55,7 +55,7 @@ namespace CKAN.GUI
             return module.IsCompatibleKSP(Main.Instance.CurrentInstance.VersionCriteria())
                 && installer.CanInstall(
                     RelationshipResolver.DependsOnlyOpts(),
-                    new List<CkanModule>() { module },
+                    new List<CkanModule> { module },
                     registry);
         }
 
@@ -169,7 +169,7 @@ namespace CKAN.GUI
                 .Select(module =>
             {
                 Registry.GetMinMaxVersions(
-                    new List<CkanModule>() {module},
+                    new List<CkanModule> {module},
                     out ModuleVersion minMod, out ModuleVersion maxMod,
                     out GameVersion minKsp,   out GameVersion maxKsp);
                 ListViewItem toRet = new ListViewItem(new string[]

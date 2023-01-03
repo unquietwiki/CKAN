@@ -131,7 +131,7 @@ namespace Tests.NetKAN.Transformers
 
             var mApi = new Mock<IGithubApi>();
             mApi.Setup(i => i.GetRepo(It.IsAny<GithubRef>()))
-                .Returns(new GithubRepo()
+                .Returns(new GithubRepo
                 {
                     HtmlUrl = "https://github.com/jrodrigv/DestructionEffects"
                 });

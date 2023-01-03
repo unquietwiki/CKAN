@@ -197,7 +197,7 @@ namespace CKAN
                     new CkanModule[] { newest_version },
                     // Remove the old module when installing the new one
                     instMod == null ? null : new CkanModule[] { instMod.Module },
-                    new RelationshipResolverOptions()
+                    new RelationshipResolverOptions
                     {
                         with_recommends = false,
                         without_toomanyprovides_kraken = true,

@@ -11,38 +11,38 @@ namespace CKAN.GUI
     public class GUIConfiguration
     {
         public string CommandLineArguments = "";
-        public bool AutoCloseWaitDialog = false;
-        public bool URLHandlerNoNag = false;
+        public bool AutoCloseWaitDialog;
+        public bool URLHandlerNoNag;
 
-        public bool CheckForUpdatesOnLaunch = false;
-        public bool CheckForUpdatesOnLaunchNoNag = false;
+        public bool CheckForUpdatesOnLaunch;
+        public bool CheckForUpdatesOnLaunchNoNag;
 
-        public bool EnableTrayIcon = false;
-        public bool MinimizeToTray = false;
+        public bool EnableTrayIcon;
+        public bool MinimizeToTray;
 
         public bool HideEpochs = true;
-        public bool HideV = false;
+        public bool HideV;
 
         public bool RefreshOnStartup = true; // Defaults to true, so everyone is forced to refresh on first start
-        public bool RefreshOnStartupNoNag = false;
-        public bool RefreshPaused = false;
+        public bool RefreshOnStartupNoNag;
+        public bool RefreshPaused;
 
         public bool AutoSortByUpdate = true;
 
-        public int ActiveFilter = 0;
+        public int ActiveFilter;
 
         /// <summary>
         /// Name of the tag filter the user chose, if any
         /// </summary>
-        public string TagFilter = null;
+        public string TagFilter;
 
         /// <summary>
         /// Name of the label filter the user chose, if any
         /// </summary>
-        public string CustomLabelFilter = null;
+        public string CustomLabelFilter;
 
         [XmlArray, XmlArrayItem(ElementName = "Search")]
-        public List<string> DefaultSearches = null;
+        public List<string> DefaultSearches;
 
         public List<string> SortColumns = new List<string>();
         public List<bool> MultiSortDescending = new List<bool>();
@@ -73,7 +73,7 @@ namespace CKAN.GUI
         /// Stores whether main window was maximised or not
         /// <para> Value is the default - window not maximised</para>
         /// </summary>
-        public bool IsWindowMaximised = false;
+        public bool IsWindowMaximised;
 
         private Point windowLocation = new Point(-1, -1);
 

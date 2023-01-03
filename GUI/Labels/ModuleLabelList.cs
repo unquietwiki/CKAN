@@ -27,22 +27,22 @@ namespace CKAN.GUI
 
         public static ModuleLabelList GetDefaultLabels()
         {
-            return new ModuleLabelList()
+            return new ModuleLabelList
             {
                 Labels = new ModuleLabel[]
                 {
-                    new ModuleLabel()
+                    new ModuleLabel
                     {
                         Name  = Properties.Resources.ModuleLabelListFavourites,
                         Color = Color.PaleGreen,
                     },
-                    new ModuleLabel()
+                    new ModuleLabel
                     {
                         Name  = Properties.Resources.ModuleLabelListHidden,
                         Hide  = true,
                         Color = Color.PaleVioletRed,
                     },
-                    new ModuleLabel()
+                    new ModuleLabel
                     {
                         Name        = Properties.Resources.ModuleLabelListHeld,
                         HoldVersion = true,

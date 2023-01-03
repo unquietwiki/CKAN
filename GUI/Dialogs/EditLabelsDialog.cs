@@ -123,7 +123,7 @@ namespace CKAN.GUI
 
         private void ColorButton_Click(object sender, EventArgs e)
         {
-            var dlg = new ColorDialog()
+            var dlg = new ColorDialog
             {
                 AnyColor       = true,
                 AllowFullOpen  = true,

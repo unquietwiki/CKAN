@@ -54,8 +54,8 @@ namespace CKAN.GUI
             return rs;
         }
 
-        private Type        contextTypeInfo;
+        private readonly Type        contextTypeInfo;
         private CultureInfo neutralResourcesCulture;
-        private Dictionary<CultureInfo, ResourceSet> myResourceSets = new Dictionary<CultureInfo, ResourceSet>();
+        private readonly Dictionary<CultureInfo, ResourceSet> myResourceSets = new Dictionary<CultureInfo, ResourceSet>();
     }
 }

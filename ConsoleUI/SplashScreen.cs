@@ -102,7 +102,7 @@ namespace CKAN.ConsoleUI {
             } catch { }
         }
 
-        private GameInstanceManager manager;
+        private readonly GameInstanceManager manager;
     }
 
 }

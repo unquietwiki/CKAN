@@ -17,8 +17,8 @@ namespace CKAN.GUI
     /// </summary>
     public partial class CloneFakeGameDialog : Form
     {
-        private GameInstanceManager manager;
-        private IUser      user;
+        private readonly GameInstanceManager manager;
+        private readonly IUser      user;
 
         public CloneFakeGameDialog(GameInstanceManager manager, IUser user)
             : base()
@@ -63,7 +63,7 @@ namespace CKAN.GUI
         private void buttonInstancePathSelection_Click(object sender, EventArgs e)
         {
             // Create a new FileDialog object
-            OpenFileDialog instanceDialog = new OpenFileDialog()
+            OpenFileDialog instanceDialog = new OpenFileDialog
             {
                 AddExtension     = false,
                 CheckFileExists  = false,

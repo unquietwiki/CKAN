@@ -292,7 +292,7 @@ namespace CKAN.ConsoleUI.Toolkit {
         public ConsolePopupMenu SortMenu()
         {
             if (sortMenu == null) {
-                List<ConsoleMenuOption> opts = new List<ConsoleMenuOption>() {
+                List<ConsoleMenuOption> opts = new List<ConsoleMenuOption> {
                     new ConsoleMenuOption(
                         Properties.Resources.Ascending, "",
                         Properties.Resources.AscendingSortTip,
@@ -421,17 +421,17 @@ namespace CKAN.ConsoleUI.Toolkit {
 
         private List<RowT>                 sortedFilteredData;
         private IList<RowT>                data;
-        private IList<ConsoleListBoxColumn<RowT>> columns;
-        private Func<RowT, string, bool>   filterCheck;
+        private readonly IList<ConsoleListBoxColumn<RowT>> columns;
+        private readonly Func<RowT, string, bool>   filterCheck;
         private ConsolePopupMenu           sortMenu;
 
-        private int               defaultSortColumn = 0;
+        private readonly int defaultSortColumn;
         private int               sortColIndex;
         private ListSortDirection sortDir;
         private string            filterStr         = "";
 
-        private int topRow      = 0;
-        private int selectedRow = 0;
+        private int topRow;
+        private int selectedRow;
 
         private const int scrollTop = 1;
 

@@ -93,8 +93,8 @@ namespace CKAN.ConsoleUI.Toolkit {
             }
         }
 
-        private          string caption;
-        private          Action choiceEvent;
+        private readonly string caption;
+        private readonly Action choiceEvent;
         private readonly string shadowStrip;
     }
 }

@@ -61,9 +61,9 @@ namespace CKAN
         public List<string> include_only_regexp;
 
         [JsonIgnore]
-        private Regex inst_pattern = null;
+        private Regex inst_pattern;
 
-        private static Regex trailingSlashPattern = new Regex("/$",
+        private static readonly Regex trailingSlashPattern = new Regex("/$",
             RegexOptions.Compiled);
 
         [OnDeserialized]
@@ -210,7 +210,7 @@ namespace CKAN
         /// </returns>
         public static ModuleInstallDescriptor DefaultInstallStanza(IGame game, string ident)
         {
-            return new ModuleInstallDescriptor()
+            return new ModuleInstallDescriptor
             {
                 find       = ident,
                 install_to = game.PrimaryModDirectoryRelative,

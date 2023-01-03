@@ -78,6 +78,7 @@
     <Compile Include="Extensions\JObjectExtensions.cs" />
     <Compile Include="Extensions\VersionExtensions.cs" />
     <Compile Include="Extensions\YamlExtensions.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Model\Metadata.cs" />
     <Compile Include="Model\RemoteRef.cs" />
     <Compile Include="Processors\Inflator.cs" />

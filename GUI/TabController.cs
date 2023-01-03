@@ -126,7 +126,7 @@ namespace CKAN.GUI
             }
         }
 
-        private TabControl m_TabControl;
+        private readonly TabControl m_TabControl;
 
         private bool m_TabLock;
 

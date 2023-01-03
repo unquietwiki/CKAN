@@ -170,9 +170,9 @@ namespace CKAN.ConsoleUI.Toolkit {
             }
         }
 
-        private List<ConsoleMenuOption> options;
-        private int                     longestLength;
-        private int                     selectedOption = 0;
+        private readonly List<ConsoleMenuOption> options;
+        private readonly int                     longestLength;
+        private int selectedOption;
 
         private static readonly string submenuIndicator = ">";
     }

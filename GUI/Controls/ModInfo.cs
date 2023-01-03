@@ -173,7 +173,7 @@ namespace CKAN.GUI
 
         private LinkLabel TagLabelLink(string name, object tag, LinkLabelLinkClickedEventHandler onClick)
         {
-            var link = new LinkLabel()
+            var link = new LinkLabel
             {
                 AutoSize     = true,
                 LinkColor    = SystemColors.GrayText,

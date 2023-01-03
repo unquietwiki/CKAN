@@ -12,7 +12,7 @@ namespace CKAN
         public string  name;
         public Uri     uri;
         public string  last_server_etag;
-        public int     priority = 0;
+        public int priority;
 
         public Repository()
         {

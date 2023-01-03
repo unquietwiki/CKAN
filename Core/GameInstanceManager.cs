@@ -17,7 +17,7 @@ namespace CKAN
     /// </summary>
     public class GameInstanceManager : IDisposable
     {
-        private static IGame[] knownGames = new IGame[]
+        private static readonly IGame[] knownGames = new IGame[]
         {
             new KerbalSpaceProgram()
         };

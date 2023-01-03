@@ -8,7 +8,7 @@ namespace Tests.Core
     [TestFixture] public class Utilities
     {
         string tempDir;
-        string goodKspDir = TestData.good_ksp_dir();
+        readonly string goodKspDir = TestData.good_ksp_dir();
 
         [SetUp]
         public void CreateTempDir()

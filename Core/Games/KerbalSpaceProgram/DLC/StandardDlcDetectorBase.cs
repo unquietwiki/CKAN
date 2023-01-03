@@ -23,7 +23,7 @@ namespace CKAN.DLC
         private readonly string DirectoryBaseName;
         private readonly Dictionary<string, string> CanonicalVersions;
 
-        private IGame game;
+        private readonly IGame game;
 
         private static readonly Regex VersionPattern = new Regex(
             @"^Version\s+(?<version>\S+)",

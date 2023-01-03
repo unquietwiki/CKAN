@@ -35,9 +35,9 @@ namespace CKAN.ConsoleUI.Toolkit {
         /// <summary>
         /// Position of cursor within field
         /// </summary>
-        public int          Position  = 0;
+        public int Position;
 
-        private int leftPos = 0;
+        private int leftPos;
 
         /// <summary>
         /// Type for event to notify that the text has changed

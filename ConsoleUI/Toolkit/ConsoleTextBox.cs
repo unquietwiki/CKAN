@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace CKAN.ConsoleUI.Toolkit {
@@ -250,15 +250,15 @@ namespace CKAN.ConsoleUI.Toolkit {
         /// </summary>
         public override bool Focusable() { return false; }
 
-        private bool         needScroll = false;
+        private bool needScroll;
         private int          prevTextW;
-        private bool         scrollToBottom;
+        private readonly bool         scrollToBottom;
         private int          topLine;
-        private TextAlign    align;
-        private SynchronizedCollection<string> lines = new SynchronizedCollection<string>();
-        private SynchronizedCollection<string> displayLines = new SynchronizedCollection<string>();
-        private Func<ConsoleTheme, ConsoleColor> getBgColor;
-        private Func<ConsoleTheme, ConsoleColor> getFgColor;
+        private readonly TextAlign    align;
+        private readonly SynchronizedCollection<string> lines = new SynchronizedCollection<string>();
+        private readonly SynchronizedCollection<string> displayLines = new SynchronizedCollection<string>();
+        private readonly Func<ConsoleTheme, ConsoleColor> getBgColor;
+        private readonly Func<ConsoleTheme, ConsoleColor> getFgColor;
     }
 
     /// <summary>

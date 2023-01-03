@@ -25,8 +25,8 @@ namespace CKAN
         private static readonly ILog log = LogManager.GetLogger(typeof (RegistryManager));
         private readonly string path;
         public readonly string lockfilePath;
-        private FileStream lockfileStream = null;
-        private StreamWriter lockfileWriter = null;
+        private FileStream lockfileStream;
+        private StreamWriter lockfileWriter;
 
         private readonly GameInstance gameInstance;
 
@@ -474,8 +474,8 @@ namespace CKAN
                 name,
                 string.Format(Properties.Resources.RegistryManagerDefaultModpackAbstract, gameInstanceName),
                 null,
-                new List<string>()  { Environment.UserName   },
-                new List<License>() { License.UnknownLicense },
+                new List<string>  { Environment.UserName   },
+                new List<License> { License.UnknownLicense },
                 new ModuleVersion(DateTime.UtcNow.ToString("yyyy.MM.dd.hh.mm.ss")),
                 null,
                 "metapackage")
@@ -523,14 +523,14 @@ namespace CKAN
         }
 
         private RelationshipDescriptor RelationshipWithVersion(InstalledModule inst)
-            => new ModuleRelationshipDescriptor()
+            => new ModuleRelationshipDescriptor
             {
                 name    = inst.identifier,
                 version = inst.Module.version,
             };
 
         private RelationshipDescriptor RelationshipWithoutVersion(InstalledModule inst)
-            => new ModuleRelationshipDescriptor()
+            => new ModuleRelationshipDescriptor
             {
                 name = inst.identifier,
             };

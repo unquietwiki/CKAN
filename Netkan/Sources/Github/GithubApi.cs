@@ -33,7 +33,7 @@ namespace CKAN.NetKAN.Sources.Github
             @"^/(?<owner>[^/]+)/(?<repo>[^/]+)/(?<type>[^/]+)/(?<branch>[^/]+)/(?<path>.+)$",
             RegexOptions.Compiled);
 
-        private static readonly HashSet<string> urlTypes = new HashSet<string>()
+        private static readonly HashSet<string> urlTypes = new HashSet<string>
         {
             "blob", "tree", "raw"
         };

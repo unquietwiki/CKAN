@@ -24,7 +24,7 @@ namespace CKAN.NetKAN.Transformers
         public readonly ModuleVersion HighestVersion;
         public          bool          Staged;
         public readonly List<string>  StagingReasons;
-        public          bool          FlakyAPI = false;
+        public          bool FlakyAPI;
     }
 
     /// <summary>

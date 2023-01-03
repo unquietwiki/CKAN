@@ -27,11 +27,11 @@ namespace CKAN
     [PermissionSet(SecurityAction.Demand, Name="FullTrust")]
     public class NetFileCache : IDisposable
     {
-        private FileSystemWatcher watcher;
+        private readonly FileSystemWatcher watcher;
         // hash => full file path
         private Dictionary<string, string> cachedFiles;
-        private string cachePath;
-        private GameInstanceManager manager;
+        private readonly string cachePath;
+        private readonly GameInstanceManager manager;
         private static readonly Regex cacheFileRegex = new Regex("^[0-9A-F]{8}-", RegexOptions.Compiled);
         private static readonly ILog log = LogManager.GetLogger(typeof (NetFileCache));
 
@@ -753,7 +753,7 @@ namespace CKAN
             }
         }
 
-        private Dictionary<string, string> sha1Cache   = new Dictionary<string, string>();
-        private Dictionary<string, string> sha256Cache = new Dictionary<string, string>();
+        private readonly Dictionary<string, string> sha1Cache   = new Dictionary<string, string>();
+        private readonly Dictionary<string, string> sha256Cache = new Dictionary<string, string>();
     }
 }

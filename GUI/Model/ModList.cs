@@ -58,7 +58,7 @@ namespace CKAN.GUI
         public readonly ModuleTagList ModuleTags = ModuleTagList.Load(ModuleTagList.DefaultPath)
             ?? new ModuleTagList();
 
-        private List<ModSearch> activeSearches = null;
+        private List<ModSearch> activeSearches;
 
         public void SetSearches(List<ModSearch> newSearches)
         {
@@ -67,7 +67,7 @@ namespace CKAN.GUI
                 activeSearches = newSearches;
 
                 Main.Instance.configuration.DefaultSearches = activeSearches?.Select(s => s?.Combined ?? "").ToList()
-                    ?? new List<string>() { "" };
+                    ?? new List<string> { "" };
 
                 ModFiltersUpdated?.Invoke(this);
             }
@@ -105,10 +105,10 @@ namespace CKAN.GUI
 
         public static SavedSearch FilterToSavedSearch(GUIModFilter filter, ModuleTag tag = null, ModuleLabel label = null)
         {
-            return new SavedSearch()
+            return new SavedSearch
             {
                 Name   = FilterName(filter, tag, label),
-                Values = new List<string>() { new ModSearch(filter, tag, label).Combined },
+                Values = new List<string> { new ModSearch(filter, tag, label).Combined },
             };
         }
 
@@ -280,7 +280,7 @@ namespace CKAN.GUI
 
         public int CountModsByFilter(GUIModFilter filter)
         {
-            return CountModsBySearches(new List<ModSearch>() { new ModSearch(filter, null, null) });
+            return CountModsBySearches(new List<ModSearch> { new ModSearch(filter, null, null) });
         }
 
         /// <summary>
@@ -306,7 +306,7 @@ namespace CKAN.GUI
 
         private DataGridViewRow MakeRow(GUIMod mod, List<ModChange> changes, string instanceName, bool hideEpochs = false, bool hideV = false)
         {
-            DataGridViewRow item = new DataGridViewRow() {Tag = mod};
+            DataGridViewRow item = new DataGridViewRow {Tag = mod};
 
             Color? myColor = ModuleLabels.LabelsFor(instanceName)
                 .FirstOrDefault(l => l.ModuleIdentifiers.Contains(mod.Identifier))
@@ -319,53 +319,53 @@ namespace CKAN.GUI
             ModChange myChange = changes?.FindLast((ModChange ch) => ch.Mod.Equals(mod));
 
             var selecting = mod.IsAutodetected
-                ? new DataGridViewTextBoxCell()
+                ? new DataGridViewTextBoxCell
                 {
                     Value = Properties.Resources.MainModListAutoDetected
                 }
                 : mod.IsInstallable()
-                ? (DataGridViewCell) new DataGridViewCheckBoxCell()
+                ? (DataGridViewCell) new DataGridViewCheckBoxCell
                 {
                     Value = myChange == null ? mod.IsInstalled
                         : myChange.ChangeType == GUIModChangeType.Install ? true
                         : myChange.ChangeType == GUIModChangeType.Remove  ? false
                         : mod.IsInstalled
                 }
-                : new DataGridViewTextBoxCell()
+                : new DataGridViewTextBoxCell
                 {
                     Value = "-"
                 };
 
             var autoInstalled = mod.IsInstalled && !mod.IsAutodetected
-                ? (DataGridViewCell) new DataGridViewCheckBoxCell()
+                ? (DataGridViewCell) new DataGridViewCheckBoxCell
                 {
                     Value = mod.IsAutoInstalled
                 }
-                : new DataGridViewTextBoxCell()
+                : new DataGridViewTextBoxCell
                 {
                     Value = "-"
                 };
 
             var updating = mod.IsInstallable() && mod.HasUpdate
-                ? (DataGridViewCell) new DataGridViewCheckBoxCell()
+                ? (DataGridViewCell) new DataGridViewCheckBoxCell
                 {
                     Value = myChange == null ? false
                         : myChange.ChangeType == GUIModChangeType.Update ? true
                         : false
                 }
-                : new DataGridViewTextBoxCell()
+                : new DataGridViewTextBoxCell
                 {
                     Value = "-"
                 };
 
             var replacing = (mod.IsInstalled && mod.HasReplacement)
-                ? (DataGridViewCell) new DataGridViewCheckBoxCell()
+                ? (DataGridViewCell) new DataGridViewCheckBoxCell
                 {
                     Value = myChange == null ? false
                         : myChange.ChangeType == GUIModChangeType.Replace ? true
                         : false
                 }
-                : new DataGridViewTextBoxCell()
+                : new DataGridViewTextBoxCell
                 {
                     Value = "-"
                 };
@@ -373,7 +373,7 @@ namespace CKAN.GUI
             var name   = new DataGridViewTextBoxCell { Value = mod.Name.Replace("&", "&&") };
             var author = new DataGridViewTextBoxCell { Value = string.Join(", ", mod.Authors).Replace("&", "&&") };
 
-            var installVersion = new DataGridViewTextBoxCell()
+            var installVersion = new DataGridViewTextBoxCell
             {
                 Value = hideEpochs
                     ? (hideV
@@ -384,7 +384,7 @@ namespace CKAN.GUI
                         : mod.InstalledVersion ?? "")
             };
 
-            var latestVersion = new DataGridViewTextBoxCell()
+            var latestVersion = new DataGridViewTextBoxCell
             {
                 Value =
                     hideEpochs ?

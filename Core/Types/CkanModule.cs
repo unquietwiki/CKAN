@@ -57,7 +57,7 @@ namespace CKAN
         private static readonly ILog log = LogManager.GetLogger(typeof (CkanModule));
 
         private static readonly Dictionary<string, string[]> required_fields =
-            new Dictionary<string, string[]>()
+            new Dictionary<string, string[]>
             {
                 {
                     "package", new string[]
@@ -159,7 +159,7 @@ namespace CKAN
 
         [JsonProperty("ksp_version_strict", Order = 12, DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
         [DefaultValue(false)]
-        public bool ksp_version_strict = false;
+        public bool ksp_version_strict;
 
         [JsonProperty("license", Order = 13)]
         [JsonConverter(typeof(JsonSingleOrArrayConverter<License>))]

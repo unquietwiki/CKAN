@@ -37,7 +37,7 @@ namespace Tests.Core.Net
             registry.Installed().Clear();
             // Make sure we have a registry we can use.
 
-            registry.Repositories = new SortedDictionary<string, Repository>()
+            registry.Repositories = new SortedDictionary<string, Repository>
             {
                 {
                     "testRepo",

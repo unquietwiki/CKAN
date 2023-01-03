@@ -43,7 +43,7 @@ namespace CKAN
             return Time.TotalHours.ToString("N1");
         }
 
-        private Stopwatch playTime = new Stopwatch();
+        private readonly Stopwatch playTime = new Stopwatch();
 
         public void Start()
         {

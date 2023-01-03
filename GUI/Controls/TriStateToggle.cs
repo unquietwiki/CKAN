@@ -10,7 +10,7 @@ namespace CKAN.GUI
         {
             SuspendLayout();
 
-            ToolTip = new ToolTip()
+            ToolTip = new ToolTip
             {
                 AutoPopDelay = 10000,
                 InitialDelay = 250,
@@ -63,7 +63,7 @@ namespace CKAN.GUI
 
         private RadioButton MakeRadioButton(int index, Bitmap icon, string tooltip, bool check = false)
         {
-            var rb = new RadioButton()
+            var rb = new RadioButton
             {
                 Appearance = Appearance.Button,
                 BackColor  = check ? SystemColors.Highlight : RadioButton.DefaultBackColor,
@@ -97,9 +97,9 @@ namespace CKAN.GUI
         private const int buttonWidth   = 33;
         private const int buttonXOffset = buttonWidth - 1;
 
-        private ToolTip     ToolTip;
-        private RadioButton YesRadioButton;
-        private RadioButton BothRadioButton;
-        private RadioButton NoRadioButton;
+        private readonly ToolTip     ToolTip;
+        private readonly RadioButton YesRadioButton;
+        private readonly RadioButton BothRadioButton;
+        private readonly RadioButton NoRadioButton;
     }
 }

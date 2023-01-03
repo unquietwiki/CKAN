@@ -14,7 +14,7 @@ namespace Tests.NetKAN.Transformers
     [TestFixture]
     public sealed class AvcTransformerTests
     {
-        private TransformOptions opts = new TransformOptions(1, null, null, false, null);
+        private readonly TransformOptions opts = new TransformOptions(1, null, null, false, null);
 
         [Test]
         public void AddsMissingVersionInfo()
@@ -266,7 +266,7 @@ namespace Tests.NetKAN.Transformers
             var mHttp          = new Mock<IHttpService>();
             var mModuleService = new Mock<IModuleService>();
             mModuleService.Setup(i => i.GetInternalAvc(It.IsAny<CkanModule>(), It.IsAny<string>(), It.IsAny<string>()))
-                .Returns(new AvcVersion()
+                .Returns(new AvcVersion
                 {
                     version = new ModuleVersion("1.2.3")
                 });

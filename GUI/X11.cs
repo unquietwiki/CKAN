@@ -20,7 +20,7 @@ namespace CKAN.GUI
         /// <param name="handle">Value of Form.Handle for the window</param>
         public static void SetWMClass(string name, string wmClass, IntPtr handle)
         {
-            var hint = new XClassHint()
+            var hint = new XClassHint
             {
                 res_name  = Marshal.StringToCoTaskMemAnsi(name),
                 res_class = Marshal.StringToCoTaskMemAnsi(wmClass)

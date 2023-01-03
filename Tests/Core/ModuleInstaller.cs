@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -30,7 +30,7 @@ namespace Tests.Core
 
         private IUser nullUser;
 
-        private DisposableKSP ksp = new DisposableKSP();
+        private readonly DisposableKSP ksp = new DisposableKSP();
 
         [SetUp]
         public void Setup()
@@ -487,7 +487,7 @@ namespace Tests.Core
                 CkanModule mod = TestData.DogeCoinFlag_101_module();
                 registry.AddAvailable(mod);
                 manager.Cache.Store(mod, TestData.DogeCoinFlagZip(), new Progress<long>(bytes => {}));
-                List<string> modules = new List<string>()
+                List<string> modules = new List<string>
                 {
                     $"{mod.identifier}={mod.version}"
                 };

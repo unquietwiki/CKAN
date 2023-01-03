@@ -36,7 +36,7 @@ namespace CKAN.ConsoleUI {
                 return false;
             });
 
-            mainMenu = new ConsolePopupMenu(new List<ConsoleMenuOption>() {
+            mainMenu = new ConsolePopupMenu(new List<ConsoleMenuOption> {
                 new ConsoleMenuOption(Properties.Resources.FiltersAddMiniAVCMenu, "",
                     Properties.Resources.FiltersAddMiniAVCMenuTip,
                     true, AddMiniAVC),
@@ -47,8 +47,8 @@ namespace CKAN.ConsoleUI {
             globalList = new ConsoleListBox<string>(
                 2, 2, -2, vMid - 1,
                 globalFilters,
-                new List<ConsoleListBoxColumn<string>>() {
-                    new ConsoleListBoxColumn<string>() {
+                new List<ConsoleListBoxColumn<string>> {
+                    new ConsoleListBoxColumn<string> {
                         Header   = Properties.Resources.FiltersGlobalHeader,
                         Width    = 40,
                         Renderer = f => f,
@@ -70,8 +70,8 @@ namespace CKAN.ConsoleUI {
             instanceList = new ConsoleListBox<string>(
                 2, vMid + 1, -2, -2,
                 instanceFilters,
-                new List<ConsoleListBoxColumn<string>>() {
-                    new ConsoleListBoxColumn<string>() {
+                new List<ConsoleListBoxColumn<string>> {
+                    new ConsoleListBoxColumn<string> {
                         Header   = Properties.Resources.FiltersInstanceHeader,
                         Width    = 40,
                         Renderer = f => f,
@@ -140,14 +140,14 @@ namespace CKAN.ConsoleUI {
             instance.InstallFilters           = instanceFilters.ToArray();
         }
 
-        private IConfiguration globalConfig;
-        private GameInstance   instance;
+        private readonly IConfiguration globalConfig;
+        private readonly GameInstance   instance;
 
         private List<string> globalFilters;
-        private List<string> instanceFilters;
+        private readonly List<string> instanceFilters;
 
-        private ConsoleListBox<string> globalList;
-        private ConsoleListBox<string> instanceList;
+        private readonly ConsoleListBox<string> globalList;
+        private readonly ConsoleListBox<string> instanceList;
 
         private static readonly string[] miniAVC = new string[] {
             "MiniAVC.dll",

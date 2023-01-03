@@ -28,7 +28,7 @@ namespace CKAN
             {
                 log.Debug("Failed to load", exc);
             }
-            return new SuppressedCompatWarningIdentifiers()
+            return new SuppressedCompatWarningIdentifiers
             {
                 GameVersionWhenWritten = gameVer
             };

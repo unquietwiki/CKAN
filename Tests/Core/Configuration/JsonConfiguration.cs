@@ -47,13 +47,13 @@ namespace Tests.Core.Configuration
 
             var reg = new JsonConfiguration(tmpFile);
 
-            CollectionAssert.AreEquivalent(new List<Tuple<string, string, string>>()
+            CollectionAssert.AreEquivalent(new List<Tuple<string, string, string>>
             {
                 new Tuple<string, string, string>("instance1", "instance1_path", "KSP"),
                 new Tuple<string, string, string>("instance2", "instance2_path", "KSP")
             }, reg.GetInstances());
 
-            CollectionAssert.AreEquivalent(new List<string>()
+            CollectionAssert.AreEquivalent(new List<string>
             {
                 "host1",
                 "host2",
@@ -84,7 +84,7 @@ namespace Tests.Core.Configuration
 
             var reg = new JsonConfiguration(tmpFile);
 
-            CollectionAssert.AreEquivalent(new List<Tuple<string, string, string>>()
+            CollectionAssert.AreEquivalent(new List<Tuple<string, string, string>>
             {
                 new Tuple<string, string, string>("instance1", "instance1_path", "KSP"),
                 new Tuple<string, string, string>("instance2", "instance2_path", "KSP")
@@ -125,13 +125,13 @@ namespace Tests.Core.Configuration
 
             var reg = new JsonConfiguration(tmpFile);
 
-            CollectionAssert.AreEquivalent(new List<Tuple<string, string, string>>()
+            CollectionAssert.AreEquivalent(new List<Tuple<string, string, string>>
             {
                 new Tuple<string, string, string>("instance1", "instance1_path", "KSP"),
                 new Tuple<string, string, string>("instance2", "instance2_path", "KSP")
             }, reg.GetInstances());
 
-            CollectionAssert.AreEquivalent(new List<string>()
+            CollectionAssert.AreEquivalent(new List<string>
             {
                 "host1",
                 "host2",
@@ -364,7 +364,7 @@ namespace Tests.Core.Configuration
                 File.Copy(tmpFile1, tmpFile2, true);
                 reg = new JsonConfiguration(tmpFile2);
 
-                CollectionAssert.AreEquivalent(new List<Tuple<string, string, string>>()
+                CollectionAssert.AreEquivalent(new List<Tuple<string, string, string>>
                 {
                     new Tuple<string, string, string>("instance_1", k1.KSP.GameDir(), "KSP"),
                     new Tuple<string, string, string>("instance_2", k2.KSP.GameDir(), "KSP")

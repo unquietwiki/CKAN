@@ -37,7 +37,7 @@ namespace Tests.Core.Net
         [Test]
         public void UpdateRegistryTarGz()
         {
-            manager.registry.Repositories = new SortedDictionary<string, Repository>()
+            manager.registry.Repositories = new SortedDictionary<string, Repository>
             {
                 {
                     "testRepo",
@@ -54,7 +54,7 @@ namespace Tests.Core.Net
         [Test]
         public void UpdateRegistryZip()
         {
-            manager.registry.Repositories = new SortedDictionary<string, Repository>()
+            manager.registry.Repositories = new SortedDictionary<string, Repository>
             {
                 {
                     "testRepo",
@@ -74,7 +74,7 @@ namespace Tests.Core.Net
         {
             Assert.DoesNotThrow(delegate
             {
-                manager.registry.Repositories = new SortedDictionary<string, Repository>()
+                manager.registry.Repositories = new SortedDictionary<string, Repository>
                 {
                     {
                         "testRepo",
@@ -90,7 +90,7 @@ namespace Tests.Core.Net
         {
             Assert.DoesNotThrow(delegate
             {
-                manager.registry.Repositories = new SortedDictionary<string, Repository>()
+                manager.registry.Repositories = new SortedDictionary<string, Repository>
                 {
                     {
                         "testRepo",

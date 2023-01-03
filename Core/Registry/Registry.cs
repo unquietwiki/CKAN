@@ -40,7 +40,7 @@ namespace CKAN
         [JsonProperty] internal Dictionary<string, AvailableModule> available_modules;
         // name => path
         [JsonProperty] private  Dictionary<string, string>          installed_dlls;
-        [JsonProperty] private  Dictionary<string, InstalledModule> installed_modules;
+        [JsonProperty] private readonly Dictionary<string, InstalledModule> installed_modules;
         // filename (case insensitive on Windows) => module
         [JsonProperty] private  Dictionary<string, string>          installed_files;
 
@@ -71,7 +71,7 @@ namespace CKAN
         //   providers[provided] = { provider1, provider2, ... }
         // Built by BuildProvidesIndex, makes LatestAvailableWithProvides much faster.
         [JsonIgnore]
-        private Dictionary<string, HashSet<AvailableModule>> providers
+        private readonly Dictionary<string, HashSet<AvailableModule>> providers
             = new Dictionary<string, HashSet<AvailableModule>>();
 
         /// <summary>
@@ -687,7 +687,7 @@ namespace CKAN
                     if (providers.TryGetValue(provided, out HashSet<AvailableModule> provs))
                         provs.Add(am);
                     else
-                        providers.Add(provided, new HashSet<AvailableModule>() { am });
+                        providers.Add(provided, new HashSet<AvailableModule> { am });
                 }
             }
         }
@@ -918,8 +918,8 @@ namespace CKAN
                     identifier,
                     "An official expansion pack for KSP",
                     null,
-                    new List<string>() { "SQUAD" },
-                    new List<License>() { new License("restricted") },
+                    new List<string> { "SQUAD" },
+                    new List<License> { new License("restricted") },
                     version,
                     null,
                     "dlc"
@@ -1216,7 +1216,7 @@ namespace CKAN
                         }
                         else
                         {
-                            index.Add(mod.download_hash.sha1, new List<CkanModule>() {mod});
+                            index.Add(mod.download_hash.sha1, new List<CkanModule> {mod});
                         }
                     }
                 }
@@ -1249,7 +1249,7 @@ namespace CKAN
                         }
                         else
                         {
-                            index.Add(hash, new List<CkanModule>() {mod});
+                            index.Add(hash, new List<CkanModule> {mod});
                         }
                     }
                 }

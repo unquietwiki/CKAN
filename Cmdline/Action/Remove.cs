@@ -11,7 +11,7 @@ namespace CKAN.CmdLine
         private static readonly ILog log = LogManager.GetLogger(typeof(Remove));
 
         public IUser user { get; set; }
-        private GameInstanceManager manager;
+        private readonly GameInstanceManager manager;
 
         /// <summary>
         /// Initialize the remove command object

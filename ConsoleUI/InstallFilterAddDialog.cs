@@ -60,7 +60,7 @@ namespace CKAN.ConsoleUI {
             return choice;
         }
 
-        private ConsoleField manualEntry;
+        private readonly ConsoleField manualEntry;
         private string       choice;
     }
 }

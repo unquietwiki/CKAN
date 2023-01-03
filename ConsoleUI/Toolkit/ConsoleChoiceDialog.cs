@@ -48,8 +48,8 @@ namespace CKAN.ConsoleUI.Toolkit {
             choices = new ConsoleListBox<ChoiceT>(
                 l + 2, t + 2 + msgLines.Count + 1, r - 2, b - 2,
                 c,
-                new List<ConsoleListBoxColumn<ChoiceT>>() {
-                    new ConsoleListBoxColumn<ChoiceT>() {
+                new List<ConsoleListBoxColumn<ChoiceT>> {
+                    new ConsoleListBoxColumn<ChoiceT> {
                         Header   = hdr,
                         Width    = w - 6,
                         Renderer = renderer,
@@ -87,7 +87,7 @@ namespace CKAN.ConsoleUI.Toolkit {
             return cancelled ? default(ChoiceT) : choices.Selection;
         }
 
-        private ConsoleListBox<ChoiceT> choices;
+        private readonly ConsoleListBox<ChoiceT> choices;
         private bool                    cancelled;
     }
 

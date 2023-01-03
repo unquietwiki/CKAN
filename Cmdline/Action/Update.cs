@@ -6,7 +6,7 @@ namespace CKAN.CmdLine
     public class Update : ICommand
     {
         public IUser user { get; set; }
-        private GameInstanceManager manager;
+        private readonly GameInstanceManager manager;
 
         /// <summary>
         /// Initialize the update command object

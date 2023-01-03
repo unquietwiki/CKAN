@@ -31,7 +31,7 @@ namespace Tests.Core.Relationships
             registry.ClearDlls();
             registry.Installed().Clear();
 
-            registry.Repositories = new SortedDictionary<string, Repository>()
+            registry.Repositories = new SortedDictionary<string, Repository>
             {
                 {
                     "testRepo",
@@ -146,7 +146,7 @@ namespace Tests.Core.Relationships
         [Test]
         public void ReverseDepends()
         {
-            var mods = new HashSet<CkanModule>()
+            var mods = new HashSet<CkanModule>
             {
                 registry.LatestAvailable("CustomBiomes",       null),
                 registry.LatestAvailable("CustomBiomesKerbal", null),
@@ -186,7 +186,7 @@ namespace Tests.Core.Relationships
         public void IsConsistent_MismatchedDependencyVersion_Inconsistent()
         {
             // Arrange
-            List<CkanModule> modules = new List<CkanModule>()
+            List<CkanModule> modules = new List<CkanModule>
             {
                 CkanModule.FromJson(@"{
                     ""identifier"": ""depender"",
@@ -212,7 +212,7 @@ namespace Tests.Core.Relationships
         public void IsConsistent_MatchedDependencyVersion_Consistent()
         {
             // Arrange
-            List<CkanModule> modules = new List<CkanModule>()
+            List<CkanModule> modules = new List<CkanModule>
             {
                 CkanModule.FromJson(@"{
                     ""identifier"": ""depender"",
@@ -238,7 +238,7 @@ namespace Tests.Core.Relationships
         public void IsConsistent_MismatchedConflictVersion_Consistent()
         {
             // Arrange
-            List<CkanModule> modules = new List<CkanModule>()
+            List<CkanModule> modules = new List<CkanModule>
             {
                 CkanModule.FromJson(@"{
                     ""identifier"": ""depender"",
@@ -264,7 +264,7 @@ namespace Tests.Core.Relationships
         public void IsConsistent_MatchedConflictVersion_Inconsistent()
         {
             // Arrange
-            List<CkanModule> modules = new List<CkanModule>()
+            List<CkanModule> modules = new List<CkanModule>
             {
                 CkanModule.FromJson(@"{
                     ""identifier"": ""depender"",
@@ -290,7 +290,7 @@ namespace Tests.Core.Relationships
         public void IsConsistent_MultipleVersionsOfSelfConflictingModule_Consistent()
         {
             // Arrange
-            List<CkanModule> modules = new List<CkanModule>()
+            List<CkanModule> modules = new List<CkanModule>
             {
                 CkanModule.FromJson(@"{
                     ""identifier"": ""self-conflictor"",
@@ -318,7 +318,7 @@ namespace Tests.Core.Relationships
         public void IsConsistent_MultipleVersionsOfSelfProvidesConflictingModule_Consistent()
         {
             // Arrange
-            List<CkanModule> modules = new List<CkanModule>()
+            List<CkanModule> modules = new List<CkanModule>
             {
                 CkanModule.FromJson(@"{
                     ""identifier"": ""provides-conflictor"",

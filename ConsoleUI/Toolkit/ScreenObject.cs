@@ -184,7 +184,7 @@ namespace CKAN.ConsoleUI.Toolkit {
             }
         }
 
-        private int left, top, right, bottom;
+        private readonly int left, top, right, bottom;
 
         private static readonly string scrollUp    = "^";
         private static readonly string scrollDown  = "v";

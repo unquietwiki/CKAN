@@ -34,7 +34,8 @@ namespace CKAN.ConsoleUI
         {
             Logging.Initialize();
 
-            new ConsoleCKAN(manager, themeName, debug);
+            // FIXME: without declaration, this comes up as an error in VS2022
+            var cCKAN = new ConsoleCKAN(manager, themeName, debug);
 
             // Tell RegistryManager not to throw Dispose-related exceptions at exit
             RegistryManager.DisposeAll();

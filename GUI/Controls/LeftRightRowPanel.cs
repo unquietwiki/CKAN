@@ -14,14 +14,14 @@ namespace CKAN
         /// </summary>
         public LeftRightRowPanel()
         {
-            LeftPanel = new FlowLayoutPanel()
+            LeftPanel = new FlowLayoutPanel
             {
                 AutoSize = true,
                 AutoSizeMode = AutoSizeMode.GrowAndShrink,
                 // Bottom-align the groups if one wraps and the other doesn't
                 Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom,
             };
-            RightPanel = new FlowLayoutPanel()
+            RightPanel = new FlowLayoutPanel
             {
                 AutoSize = true,
                 AutoSizeMode = AutoSizeMode.GrowAndShrink,
@@ -84,7 +84,7 @@ namespace CKAN
             }
         }
 
-        private FlowLayoutPanel LeftPanel;
-        private FlowLayoutPanel RightPanel;
+        private readonly FlowLayoutPanel LeftPanel;
+        private readonly FlowLayoutPanel RightPanel;
     }
 }

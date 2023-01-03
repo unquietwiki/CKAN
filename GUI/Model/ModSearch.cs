@@ -350,7 +350,7 @@ namespace CKAN.GUI
                         knownLabels.Where(lb => lb.Name.Replace(" ", "") == labelName)
                             // If label doesn't exist, maybe it will be created later or the user is still typing.
                             // Make an unofficial label object to accurately reflect the search.
-                            .DefaultIfEmpty(new ModuleLabel() { Name = labelName })
+                            .DefaultIfEmpty(new ModuleLabel { Name = labelName })
                     );
                 }
                 else if (TryPrefix(s, Properties.Resources.ModSearchYesPrefix, out string yesSuffix))

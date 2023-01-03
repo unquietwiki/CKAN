@@ -71,7 +71,7 @@ namespace CKAN.GUI
         /// <summary>
         /// True if user clicked the abort button, false otherwise
         /// </summary>
-        public bool     Abort { get; private set; } = false;
+        public bool Abort { get; private set; }
         /// <summary>
         /// Array of data objects with a checkmark in the Retry column
         /// </summary>
@@ -159,9 +159,9 @@ namespace CKAN.GUI
             Close();
         }
 
-        private List<DownloadRow> rows;
-        private Func<object, object, bool> rowsLinked;
-        private TaskCompletionSource<object[]> task = new TaskCompletionSource<object[]>();
+        private readonly List<DownloadRow> rows;
+        private readonly Func<object, object, bool> rowsLinked;
+        private readonly TaskCompletionSource<object[]> task = new TaskCompletionSource<object[]>();
 
         private static readonly ILog log = LogManager.GetLogger(typeof(DownloadsFailedDialog));
     }

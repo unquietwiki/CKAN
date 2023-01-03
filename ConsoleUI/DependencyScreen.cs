@@ -44,18 +44,18 @@ namespace CKAN.ConsoleUI {
             dependencyList = new ConsoleListBox<Dependency>(
                 1, 4, -1, -2,
                 new List<Dependency>(dependencies.Values),
-                new List<ConsoleListBoxColumn<Dependency>>() {
-                    new ConsoleListBoxColumn<Dependency>() {
+                new List<ConsoleListBoxColumn<Dependency>> {
+                    new ConsoleListBoxColumn<Dependency> {
                         Header   = Properties.Resources.RecommendationsInstallHeader,
                         Width    = 7,
                         Renderer = (Dependency d) => StatusSymbol(d.module)
                     },
-                    new ConsoleListBoxColumn<Dependency>() {
+                    new ConsoleListBoxColumn<Dependency> {
                         Header   = Properties.Resources.RecommendationsNameHeader,
                         Width    = 36,
                         Renderer = (Dependency d) => d.module.ToString()
                     },
-                    new ConsoleListBoxColumn<Dependency>() {
+                    new ConsoleListBoxColumn<Dependency> {
                         Header   = Properties.Resources.RecommendationsSourcesHeader,
                         Width    = 42,
                         Renderer = (Dependency d) => string.Join(", ", d.dependents)
@@ -157,7 +157,7 @@ namespace CKAN.ConsoleUI {
                 out Dictionary<CkanModule, HashSet<string>> supporters
             )) {
                 foreach (var kvp in recommendations) {
-                    dependencies.Add(kvp.Key, new Dependency() {
+                    dependencies.Add(kvp.Key, new Dependency {
                         module         = kvp.Key,
                         defaultInstall = kvp.Value.Item1,
                         dependents     = kvp.Value.Item2.OrderBy(d => d).ToList()
@@ -167,14 +167,14 @@ namespace CKAN.ConsoleUI {
                     }
                 }
                 foreach (var kvp in suggestions) {
-                    dependencies.Add(kvp.Key, new Dependency() {
+                    dependencies.Add(kvp.Key, new Dependency {
                         module         = kvp.Key,
                         defaultInstall = false,
                         dependents     = kvp.Value.OrderBy(d => d).ToList()
                     });
                 }
                 foreach (var kvp in supporters) {
-                    dependencies.Add(kvp.Key, new Dependency() {
+                    dependencies.Add(kvp.Key, new Dependency {
                         module         = kvp.Key,
                         defaultInstall = false,
                         dependents     = kvp.Value.OrderBy(d => d).ToList()
@@ -202,17 +202,17 @@ namespace CKAN.ConsoleUI {
                 : notinstalled;
         }
 
-        private HashSet<CkanModule> accepted = new HashSet<CkanModule>();
-        private HashSet<string>     rejected;
+        private readonly HashSet<CkanModule> accepted = new HashSet<CkanModule>();
+        private readonly HashSet<string>     rejected;
 
-        private IRegistryQuerier    registry;
-        private GameInstanceManager manager;
-        private ModuleInstaller     installer;
-        private ChangePlan          plan;
-        private bool                debug;
+        private readonly IRegistryQuerier    registry;
+        private readonly GameInstanceManager manager;
+        private readonly ModuleInstaller     installer;
+        private readonly ChangePlan          plan;
+        private readonly bool                debug;
 
-        private Dictionary<CkanModule, Dependency> dependencies = new Dictionary<CkanModule, Dependency>();
-        private ConsoleListBox<Dependency>         dependencyList;
+        private readonly Dictionary<CkanModule, Dependency> dependencies = new Dictionary<CkanModule, Dependency>();
+        private readonly ConsoleListBox<Dependency>         dependencyList;
 
         private static readonly string notinstalled = " ";
         private static readonly string installing   = "+";

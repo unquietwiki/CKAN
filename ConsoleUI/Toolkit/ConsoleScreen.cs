@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace CKAN.ConsoleUI.Toolkit {
@@ -71,7 +71,7 @@ namespace CKAN.ConsoleUI.Toolkit {
         /// <summary>
         /// Menu to open for F10 from the hamburger icon of this screen
         /// </summary>
-        protected ConsolePopupMenu mainMenu = null;
+        protected ConsolePopupMenu mainMenu;
 
         #region IUser
 
@@ -94,7 +94,7 @@ namespace CKAN.ConsoleUI.Toolkit {
         {
             ConsoleMessageDialog d = new ConsoleMessageDialog(
                 string.Join("", messagePieces) + question,
-                new List<string>() {
+                new List<string> {
                     Properties.Resources.Yes,
                     Properties.Resources.No
                 }
@@ -147,7 +147,7 @@ namespace CKAN.ConsoleUI.Toolkit {
         {
             ConsoleMessageDialog d = new ConsoleMessageDialog(
                 string.Join("", messagePieces) + string.Format(message, args),
-                new List<string>() { Properties.Resources.OK }
+                new List<string> { Properties.Resources.OK }
             );
             messagePieces.Clear();
             d.Run(userTheme);
@@ -191,7 +191,7 @@ namespace CKAN.ConsoleUI.Toolkit {
         // But there's nothing intrinsic to the API that tells us which strings
         // to combine. So we'll just save them all and then combine them
         // when a function is called that takes input.
-        private List<string> messagePieces = new List<string>();
+        private readonly List<string> messagePieces = new List<string>();
 
         /// <summary>
         /// Update a user visible progress bar

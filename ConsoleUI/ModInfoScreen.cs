@@ -371,7 +371,7 @@ namespace CKAN.ConsoleUI {
                                 () => string.Format(Properties.Resources.ModInfoReplacedBy, mr.ReplaceWith.identifier),
                                 th => th.AlertFrameFg,
                                 false,
-                                new List<CkanModule>() {mr.ReplaceWith}
+                                new List<CkanModule> {mr.ReplaceWith}
                             );
                             boxTop += boxH;
 
@@ -382,7 +382,7 @@ namespace CKAN.ConsoleUI {
                                     : Properties.Resources.ModInfoInstalledManually,
                                 th => th.ActiveFrameFg,
                                 true,
-                                new List<CkanModule>() {inst}
+                                new List<CkanModule> {inst}
                             );
                             boxTop += boxH;
 
@@ -395,7 +395,7 @@ namespace CKAN.ConsoleUI {
                                     : Properties.Resources.ModInfoLatestInstalledManually,
                                 th => th.ActiveFrameFg,
                                 true,
-                                new List<CkanModule>() {inst}
+                                new List<CkanModule> {inst}
                             );
                             boxTop += boxH;
 
@@ -409,7 +409,7 @@ namespace CKAN.ConsoleUI {
                             () => Properties.Resources.ModInfoLatestVersion,
                             th => th.AlertFrameFg,
                             false,
-                            new List<CkanModule>() {latest}
+                            new List<CkanModule> {latest}
                         );
                         boxTop += boxH;
 
@@ -420,7 +420,7 @@ namespace CKAN.ConsoleUI {
                                     : Properties.Resources.ModInfoInstalledManually,
                             th => th.ActiveFrameFg,
                             true,
-                            new List<CkanModule>() {inst}
+                            new List<CkanModule> {inst}
                         );
                         boxTop += boxH;
 
@@ -432,7 +432,7 @@ namespace CKAN.ConsoleUI {
                             () => Properties.Resources.ModInfoLatestVersion,
                         th => th.NormalFrameFg,
                         false,
-                        new List<CkanModule>() {latest}
+                        new List<CkanModule> {latest}
                     );
                     boxTop += boxH;
 
@@ -463,7 +463,7 @@ namespace CKAN.ConsoleUI {
                         : Properties.Resources.ModInfoUnavailableInstalledManually,
                     th => th.AlertFrameFg,
                     true,
-                    new List<CkanModule>() {mod}
+                    new List<CkanModule> {mod}
                 );
                 boxTop += boxH;
 
@@ -576,7 +576,7 @@ namespace CKAN.ConsoleUI {
             inst.User = null;
         }
 
-        private static readonly Dictionary<string, string> hostDomains = new Dictionary<string, string>() {
+        private static readonly Dictionary<string, string> hostDomains = new Dictionary<string, string> {
             { "github.com",                   "GitHub"           },
             { "spacedock.info",               "SpaceDock"        },
             { "archive.org",                  "Internet Archive" },
@@ -586,11 +586,11 @@ namespace CKAN.ConsoleUI {
             { "forum.kerbalspaceprogram.com", "KSP Forums"       }
         };
 
-        private GameInstanceManager manager;
-        private IRegistryQuerier    registry;
-        private ChangePlan          plan;
-        private CkanModule          mod;
-        private bool                debug;
+        private readonly GameInstanceManager manager;
+        private readonly IRegistryQuerier    registry;
+        private readonly ChangePlan          plan;
+        private readonly CkanModule          mod;
+        private readonly bool                debug;
     }
 
 }

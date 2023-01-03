@@ -53,6 +53,6 @@ namespace CKAN.ConsoleUI
         }
 
         private CultureInfo neutralResourcesCulture;
-        private Dictionary<CultureInfo, ResourceSet> myResourceSets = new Dictionary<CultureInfo, ResourceSet>();
+        private readonly Dictionary<CultureInfo, ResourceSet> myResourceSets = new Dictionary<CultureInfo, ResourceSet>();
     }
 }

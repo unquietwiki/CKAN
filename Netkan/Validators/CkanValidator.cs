@@ -41,7 +41,7 @@ namespace CKAN.NetKAN.Validators
             new MatchingIdentifiersValidator(netkan.Identifier).Validate(metadata);
         }
 
-        private IHttpService   downloader;
-        private IModuleService moduleService;
+        private readonly IHttpService   downloader;
+        private readonly IModuleService moduleService;
     }
 }

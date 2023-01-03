@@ -71,7 +71,7 @@ namespace CKAN.GUI
             return (obj as ModChange).Mod.Equals(Mod);
         }
 
-        private static int maxEnumVal = Enum.GetValues(typeof(GUIModChangeType)).Cast<int>().Max();
+        private static readonly int maxEnumVal = Enum.GetValues(typeof(GUIModChangeType)).Cast<int>().Max();
 
         public override int GetHashCode()
         {

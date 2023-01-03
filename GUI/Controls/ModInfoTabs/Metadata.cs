@@ -89,7 +89,7 @@ namespace CKAN.GUI
 
         private LinkLabel AuthorLink(string name)
         {
-            var link = new LinkLabel()
+            var link = new LinkLabel
             {
                 AutoSize     = true,
                 LinkColor    = SystemColors.GrayText,
@@ -109,10 +109,10 @@ namespace CKAN.GUI
             var author = link.Text;
             var merge  = (Control.ModifierKeys & (Keys.Control | Keys.Shift)) != 0;
             OnChangeFilter?.Invoke(
-                new SavedSearch()
+                new SavedSearch
                 {
                     Name   = string.Format(Properties.Resources.AuthorSearchName, author),
-                    Values = new List<string>()
+                    Values = new List<string>
                     {
                         ModSearch.FromAuthors(Enumerable.Repeat(author, 1)).Combined
                     },
@@ -186,7 +186,7 @@ namespace CKAN.GUI
             const int vPadding = 5;
             if (link != null)
             {
-                Label lbl = new Label()
+                Label lbl = new Label
                 {
                     AutoSize  = true,
                     Dock      = DockStyle.Fill,
@@ -194,7 +194,7 @@ namespace CKAN.GUI
                     Padding   = new Padding(0, vPadding, 0, vPadding),
                     Text      = label,
                 };
-                LinkLabel llbl = new LinkLabel()
+                LinkLabel llbl = new LinkLabel
                 {
                     AutoSize = false,
                     Dock     = DockStyle.Fill,

@@ -120,7 +120,7 @@ namespace CKAN.GUI
             }
         }
 
-        private static readonly RelationshipResolverOptions conflictOptions = new RelationshipResolverOptions()
+        private static readonly RelationshipResolverOptions conflictOptions = new RelationshipResolverOptions
         {
             without_toomanyprovides_kraken = true,
             proceed_with_inconsistencies   = true,

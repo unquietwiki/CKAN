@@ -14,7 +14,7 @@ namespace CKAN.CmdLine
         private static readonly ILog log = LogManager.GetLogger(typeof(Upgrade));
 
         public IUser User { get; set; }
-        private GameInstanceManager manager;
+        private readonly GameInstanceManager manager;
 
         /// <summary>
         /// Initialize the upgrade command object

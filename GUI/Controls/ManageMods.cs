@@ -60,11 +60,11 @@ namespace CKAN.GUI
         private static readonly ILog log = LogManager.GetLogger(typeof(ManageMods));
         private DateTime lastSearchTime;
         private string lastSearchKey;
-        private NavigationHistory<GUIMod> navHistory;
+        private readonly NavigationHistory<GUIMod> navHistory;
 
         private List<ModChange> currentChangeSet;
         private Dictionary<GUIMod, string> conflicts;
-        private bool freezeChangeSet = false;
+        private bool freezeChangeSet;
 
         public readonly ModList mainModList;
         private List<string> sortColumns
@@ -570,7 +570,7 @@ namespace CKAN.GUI
                 ModListHeaderContextMenuStrip.Items.AddRange(
                     ModGrid.Columns.Cast<DataGridViewColumn>()
                     .Where(col => col.Name != "Installed" && col.Name != "UpdateCol" && col.Name != "ReplaceCol")
-                    .Select(col => new ToolStripMenuItem()
+                    .Select(col => new ToolStripMenuItem
                     {
                         Name    = col.Name,
                         Text    = col.HeaderText,
@@ -586,7 +586,7 @@ namespace CKAN.GUI
                 // Add tags
                 ModListHeaderContextMenuStrip.Items.AddRange(
                     mainModList.ModuleTags.Tags.OrderBy(kvp => kvp.Key)
-                    .Select(kvp => new ToolStripMenuItem()
+                    .Select(kvp => new ToolStripMenuItem
                     {
                         Name    = kvp.Key,
                         Text    = kvp.Key,
@@ -999,7 +999,7 @@ namespace CKAN.GUI
             IRegistryQuerier registry = RegistryManager.Instance(Main.Instance.CurrentInstance).registry;
 
             // Find everything we need to re-install
-            var revdep = registry.FindReverseDependencies(new List<string>() { module.Identifier })
+            var revdep = registry.FindReverseDependencies(new List<string> { module.Identifier })
                 .Select(ident => registry.InstalledModule(ident))
                 .ToHashSet();
             var goners = revdep.Union(

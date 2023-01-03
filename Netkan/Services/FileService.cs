@@ -58,6 +58,6 @@ namespace CKAN.NetKAN.Services
             return mimetype;
         }
 
-        private NetFileCache cache;
+        private readonly NetFileCache cache;
     }
 }

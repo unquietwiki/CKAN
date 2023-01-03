@@ -68,7 +68,7 @@ namespace Tests.NetKAN.Extensions
         public void ToJObject_ValidInput_Works()
         {
             // Arrange
-            var yaml = new YamlMappingNode()
+            var yaml = new YamlMappingNode
             {
                 { "spec_version", "v1.4" },
                 { "identifier",   "Astrogator" },
@@ -85,7 +85,7 @@ namespace Tests.NetKAN.Extensions
                 },
                 {
                     "resources",
-                    new YamlMappingNode()
+                    new YamlMappingNode
                     {
                         { "homepage", "https://forum.kerbalspaceprogram.com/index.php?/topic/155998-*" },
                         { "bugtracker", "https://github.com/HebaruSan/Astrogator/issues" },
@@ -95,11 +95,11 @@ namespace Tests.NetKAN.Extensions
                 {
                     "recommends",
                     new YamlSequenceNode(
-                        new YamlMappingNode()
+                        new YamlMappingNode
                         {
                             { "name", "ModuleManager"   }
                         },
-                        new YamlMappingNode()
+                        new YamlMappingNode
                         {
                             { "name", "LoadingTipsPlus" }
                         }

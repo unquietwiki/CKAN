@@ -14,7 +14,7 @@ namespace CKAN
             "stable", "testing", "development" // Spec 1.0 statuses
         };
 
-        private string status;
+        private readonly string status;
 
         /// <summary>
         /// Creates a ReleaseStatus object which compiles to the CKAN spec.

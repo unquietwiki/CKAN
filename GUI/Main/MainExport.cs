@@ -60,7 +60,7 @@ namespace CKAN.GUI
         /// </summary>
         private void exportModListToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var dlg = new SaveFileDialog()
+            var dlg = new SaveFileDialog
             {
                 Filter = string.Join("|", specialExportOptions.Select(i => i.ToString()).ToArray()),
                 Title  = Properties.Resources.ExportInstalledModsDialogTitle

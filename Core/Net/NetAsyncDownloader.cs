@@ -38,7 +38,7 @@ namespace CKAN
             public event Action<int, long, long>                         Progress;
             public event Action<object, AsyncCompletedEventArgs, string> Done;
 
-            private string mimeType;
+            private readonly string mimeType;
             private ResumingWebClient agent;
 
             public NetAsyncDownloaderDownloadPart(Net.DownloadTarget target)
@@ -115,8 +115,8 @@ namespace CKAN
         public event Action<Net.DownloadTarget, long, long> Progress;
 
         private readonly object dlMutex = new object();
-        private List<NetAsyncDownloaderDownloadPart> downloads = new List<NetAsyncDownloaderDownloadPart>();
-        private List<Net.DownloadTarget> queuedDownloads = new List<Net.DownloadTarget>();
+        private readonly List<NetAsyncDownloaderDownloadPart> downloads = new List<NetAsyncDownloaderDownloadPart>();
+        private readonly List<Net.DownloadTarget> queuedDownloads = new List<Net.DownloadTarget>();
         private int completed_downloads;
 
         //Used for inter-thread communication.

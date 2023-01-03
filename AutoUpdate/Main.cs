@@ -191,7 +191,7 @@ namespace CKAN.AutoUpdateHelper
         }
 
         private const  int  maxRetries = 8;
-        private static bool fromGui    = false;
+        private static bool fromGui;
 
         private const int ExitOK     = 0;
         private const int ExitBADOPT = 1;

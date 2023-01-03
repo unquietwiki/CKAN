@@ -293,6 +293,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Model\GUIConfiguration.cs" />
     <Compile Include="Model\ExportOption.cs" />
     <Compile Include="Model\GUIMod.cs" />

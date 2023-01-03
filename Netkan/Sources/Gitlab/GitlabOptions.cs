@@ -13,6 +13,6 @@ namespace CKAN.NetKAN.Sources.Gitlab
         /// If they add other assets in the future, this requirement can be relaxed.
         /// </summary>
         [JsonProperty("use_source_archive")]
-        public readonly bool UseSourceArchive = false;
+        public readonly bool UseSourceArchive;
     }
 }

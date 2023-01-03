@@ -151,7 +151,7 @@ namespace CKAN
         {
             File.WriteAllText(
                 CompatibleGameVersionsFile(),
-                JsonConvert.SerializeObject(new CompatibleGameVersions()
+                JsonConvert.SerializeObject(new CompatibleGameVersions
                 {
                     GameVersionWhenWritten = Version()?.ToString(),
                     Versions = _compatibleVersions.Select(v => v.ToString()).ToList()

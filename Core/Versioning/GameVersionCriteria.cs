@@ -8,7 +8,7 @@ namespace CKAN.Versioning
 {
     public class GameVersionCriteria : IEquatable<GameVersionCriteria>
     {
-        private List<GameVersion> _versions = new List<GameVersion>();
+        private readonly List<GameVersion> _versions = new List<GameVersion>();
 
         public GameVersionCriteria(GameVersion v)
         {

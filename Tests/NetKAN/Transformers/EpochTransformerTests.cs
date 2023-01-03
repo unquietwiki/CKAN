@@ -24,7 +24,7 @@ namespace Tests.NetKAN.Transformers
         public void Transform_WithHighVersionParam_MatchesExpected(string version, string highVer, string expected)
         {
             // Arrange
-            var json = new JObject()
+            var json = new JObject
             {
                 { "spec_version", "v1.4"       },
                 { "identifier",   "AwesomeMod" },

@@ -74,7 +74,7 @@ namespace CKAN.ConsoleUI {
             ConsoleMessageDialog d = new ConsoleMessageDialog(
                 // The installer's questions include embedded newlines for spacing in CmdLine
                 question.Trim(),
-                new List<string>() {
+                new List<string> {
                     Properties.Resources.Yes,
                     Properties.Resources.No
                 },
@@ -122,14 +122,14 @@ namespace CKAN.ConsoleUI {
             this.percent = percent / 100.0;
         }
 
-        private ConsoleProgressBar progress;
-        private ConsoleTextBox     messages;
+        private readonly ConsoleProgressBar progress;
+        private readonly ConsoleTextBox     messages;
 
         private ConsoleTheme yesNoTheme;
 
         private string topMessage      = "";
-        private string taskDescription = "";
-        private double percent         = 0;
+        private readonly string taskDescription = "";
+        private double percent;
     }
 
 }

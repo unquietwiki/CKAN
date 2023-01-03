@@ -116,7 +116,7 @@ namespace CKAN.ConsoleUI.Toolkit {
             Quit();
         }
 
-        private       int selectedButton = 0;
+        private       int selectedButton;
         private const int buttonWidth    = 10;
         private const int buttonPadding  = 3;
         private const int minWidth       = 40;

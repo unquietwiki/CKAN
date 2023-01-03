@@ -12,7 +12,7 @@ namespace Tests.NetKAN
     [TestFixture]
     public class MainClassTests
     {
-        private TransformOptions opts = new TransformOptions(1, null, null, false, null);
+        private readonly TransformOptions opts = new TransformOptions(1, null, null, false, null);
 
         [Test]
         public void FixVersionStringsUnharmed()

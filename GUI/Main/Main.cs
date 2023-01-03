@@ -43,7 +43,7 @@ namespace CKAN.GUI
             set { manager = value; }
         }
 
-        private bool needRegistrySave = false;
+        private bool needRegistrySave;
 
         public string[] commandLineArgs;
 
@@ -301,7 +301,7 @@ namespace CKAN.GUI
         /// Form.Visible says true even when the form hasn't shown yet.
         /// This value will tell the truth.
         /// </summary>
-        public bool actuallyVisible { get; private set; } = false;
+        public bool actuallyVisible { get; private set; }
 
         protected override void OnShown(EventArgs e)
         {
@@ -553,7 +553,7 @@ namespace CKAN.GUI
 
         private void installFromckanToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenFileDialog open_file_dialog = new OpenFileDialog()
+            OpenFileDialog open_file_dialog = new OpenFileDialog
             {
                 Filter      = Properties.Resources.CKANFileFilter,
                 Multiselect = true,
@@ -831,9 +831,9 @@ namespace CKAN.GUI
 
                 Directory.SetCurrentDirectory(CurrentInstance.GameDir());
 
-                Process p = new Process()
+                Process p = new Process
                 {
-                    StartInfo = new ProcessStartInfo()
+                    StartInfo = new ProcessStartInfo
                     {
                         FileName = binary,
                         Arguments = args

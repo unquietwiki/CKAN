@@ -77,8 +77,8 @@ namespace CKAN.ConsoleUI {
                 && !ServiceLocator.Container.Resolve<IConfiguration>().TryGetAuthToken(hostEntry.Value, out token);
         }
 
-        private ConsoleField hostEntry;
-        private ConsoleField tokenEntry;
+        private readonly ConsoleField hostEntry;
+        private readonly ConsoleField tokenEntry;
 
         private const int wPad   = 2;
         private int labelW => Math.Max(6, Math.Max(

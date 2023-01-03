@@ -29,7 +29,7 @@ namespace CKAN
 
         private static readonly ILog log = LogManager.GetLogger(typeof(Net));
 
-        public static readonly Dictionary<string, Uri> ThrottledHosts = new Dictionary<string, Uri>()
+        public static readonly Dictionary<string, Uri> ThrottledHosts = new Dictionary<string, Uri>
         {
             {
                 "api.github.com",

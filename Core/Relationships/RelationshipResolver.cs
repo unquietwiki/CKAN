@@ -22,18 +22,18 @@ namespace CKAN
         /// <summary>
         /// If true, add suggests, but not suggested suggests. :)
         /// </summary>
-        public bool with_suggests = false;
+        public bool with_suggests;
 
         /// <summary>
         /// If true, add suggested modules, and *their* suggested modules, too!
         /// </summary>
-        public bool with_all_suggests = false;
+        public bool with_all_suggests;
 
         /// <summary>
         /// If true, surpresses the TooManyProvides kraken when resolving
         /// relationships. Otherwise, we just pick the first.
         /// </summary>
-        public bool without_toomanyprovides_kraken = false;
+        public bool without_toomanyprovides_kraken;
 
         /// <summary>
         /// If true, we skip our sanity check at the end of our relationship
@@ -41,7 +41,7 @@ namespace CKAN
         /// installed, so this is mostly useful for giving the user feedback
         /// on failed resolutions.
         /// </summary>
-        public bool without_enforce_consistency = false;
+        public bool without_enforce_consistency;
 
         /// <summary>
         /// If true, we'll populate the `conflicts` field, rather than immediately
@@ -49,7 +49,7 @@ namespace CKAN
         /// solutions are non-installable, so mostly of use to provide user
         /// feedback when things go wrong.
         /// </summary>
-        public bool proceed_with_inconsistencies = false;
+        public bool proceed_with_inconsistencies;
 
         /// <summary>
         /// If true, then if a module has no versions that are compatible with
@@ -58,7 +58,7 @@ namespace CKAN
         /// This replaces the former behavior of ignoring compatibility for
         /// `install identifier=version` commands.
         /// </summary>
-        public bool allow_incompatible = false;
+        public bool allow_incompatible;
 
         public object Clone()
         {
@@ -108,7 +108,7 @@ namespace CKAN
         /// </summary>
         private readonly HashSet<CkanModule> installed_modules;
 
-        private HashSet<CkanModule> alreadyResolved = new HashSet<CkanModule>();
+        private readonly HashSet<CkanModule> alreadyResolved = new HashSet<CkanModule>();
 
         private void AddReason(CkanModule module, SelectionReason reason)
         {
@@ -118,7 +118,7 @@ namespace CKAN
             }
             else
             {
-                reasons.Add(module, new List<SelectionReason>() { reason });
+                reasons.Add(module, new List<SelectionReason> { reason });
             }
         }
 

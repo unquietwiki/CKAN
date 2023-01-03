@@ -55,9 +55,9 @@ namespace CKAN.ConsoleUI.Toolkit {
         /// </summary>
         public override bool Focusable() { return false; }
 
-        private Func<string>       labelFunc;
-        private Func<ConsoleTheme, ConsoleColor> getBgColor;
-        private Func<ConsoleTheme, ConsoleColor> getFgColor;
+        private readonly Func<string>       labelFunc;
+        private readonly Func<ConsoleTheme, ConsoleColor> getBgColor;
+        private readonly Func<ConsoleTheme, ConsoleColor> getFgColor;
     }
 
 }

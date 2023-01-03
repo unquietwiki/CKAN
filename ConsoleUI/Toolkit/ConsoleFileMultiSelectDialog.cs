@@ -57,17 +57,17 @@ namespace CKAN.ConsoleUI.Toolkit {
             fileList = new ConsoleListBox<FileSystemInfo>(
                 left + 2, top + 4, right - 2, bottom - 2,
                 getFileList(),
-                new List<ConsoleListBoxColumn<FileSystemInfo>>() {
-                    new ConsoleListBoxColumn<FileSystemInfo>() {
+                new List<ConsoleListBoxColumn<FileSystemInfo>> {
+                    new ConsoleListBoxColumn<FileSystemInfo> {
                         Header   = toggleHeader,
                         Width    = 8,
                         Renderer = getRowSymbol
-                    }, new ConsoleListBoxColumn<FileSystemInfo>() {
+                    }, new ConsoleListBoxColumn<FileSystemInfo> {
                         Header   = Properties.Resources.FileSelectNameHeader,
                         Width    = 36,
                         Renderer = getRowName,
                         Comparer = compareNames
-                    }, new ConsoleListBoxColumn<FileSystemInfo>() {
+                    }, new ConsoleListBoxColumn<FileSystemInfo> {
                         Header   = Properties.Resources.FileSelectSizeHeader,
                         // Longest: "1023.1 KB"
                         Width    = 9,
@@ -78,7 +78,7 @@ namespace CKAN.ConsoleUI.Toolkit {
                                 ? (fb == null ? 0 : -1)
                                 : (fb == null ? 1 : fa.Length.CompareTo(fb.Length));
                         }
-                    }, new ConsoleListBoxColumn<FileSystemInfo>() {
+                    }, new ConsoleListBoxColumn<FileSystemInfo> {
                         Header   = Properties.Resources.FileSelectTimestampHeader,
                         Width    = 10,
                         Renderer = (FileSystemInfo fi) => fi.LastWriteTime.ToString("yyyy-MM-dd"),
@@ -299,13 +299,13 @@ namespace CKAN.ConsoleUI.Toolkit {
         }
 
         private List<FileSystemInfo>           contents;
-        private ConsoleField                   pathField;
-        private ConsoleListBox<FileSystemInfo> fileList;
+        private readonly ConsoleField                   pathField;
+        private readonly ConsoleListBox<FileSystemInfo> fileList;
         private DirectoryInfo                  curDir;
 
-        private HashSet<FileInfo> chosenFiles = new HashSet<FileInfo>();
+        private readonly HashSet<FileInfo> chosenFiles = new HashSet<FileInfo>();
 
-        private string filePattern;
+        private readonly string filePattern;
 
         private static readonly string chosen  = Symbols.checkmark;
 
